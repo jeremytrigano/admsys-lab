@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours - Hyperviseurs — AdmSys</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link active">Cours - Hyperviseurs</a></li><li><a href="../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><p>﻿# Hyperviseurs</p>
+<blockquote>
+<p>Voir aussi : <a href="../01 - Virtualisation/Cours - Virtualisation.html">Cours - Virtualisation</a> · <span class="link-unpublished" title="Page non publiée">TP01-Installation-Proxmox</span></p>
+</blockquote>
+<h2>Définition</h2>
+<p>Un hyperviseur est le logiciel qui crée et gère les machines virtuelles sur un hôte physique.</p>
+<h2>Types</h2>
+<h3>Type 1 (bare metal)</h3>
+<p>Installé directement sur le matériel.</p>
+<ul>
+<li>VMware ESXi</li>
+<li>Microsoft Hyper-V</li>
+<li>Proxmox VE</li>
+</ul>
+<h3>Type 2 (hébergé)</h3>
+<p>Installé comme application sur un OS hôte.</p>
+<ul>
+<li>VirtualBox</li>
+<li>VMware Workstation</li>
+</ul>
+<h2>Comparaison rapide</h2>
+<table>
+<thead>
+<tr>
+<th>Hyperviseur</th>
+<th>Licence</th>
+<th>Usage typique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VMware ESXi</td>
+<td>Commerciale</td>
+<td>Grandes entreprises</td>
+</tr>
+<tr>
+<td>Hyper-V</td>
+<td>Incluse Windows Server</td>
+<td>Environnements Microsoft</td>
+</tr>
+<tr>
+<td>Proxmox</td>
+<td>Open source</td>
+<td>PME, labos, hébergeurs</td>
+</tr>
+</tbody>
+</table>
+<h2>Concepts Proxmox</h2>
+<ul>
+<li><strong>Node</strong> : serveur physique Proxmox</li>
+<li><strong>VM</strong> : machine virtuelle complète</li>
+<li><strong>CT (LXC)</strong> : conteneur Linux léger</li>
+<li><strong>Storage</strong> : stockage des disques VM</li>
+<li><strong>Bridge (vmbr0)</strong> : réseau virtuel</li>
+</ul>
+<h2>Bonnes pratiques</h2>
+<ul>
+<li>Mettre à jour l'hyperviseur régulièrement</li>
+<li>Sauvegarder la configuration de l'hôte</li>
+<li>Monitorer l'utilisation CPU/RAM/disque</li>
+<li>Documenter chaque VM (rôle, IP, propriétaire)</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../01 - Virtualisation/Cours - Virtualisation.html">Cours - Virtualisation</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <span class="link-unpublished" title="Page non publiée">TP01-Installation-Proxmox</span></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><span class="link-unpublished" title="Page non publiée">Architecture</span> · <span class="link-unpublished" title="Page non publiée">Cours - Réseaux</span></td>
+</tr>
+<tr>
+<td>TP associé</td>
+<td><span class="link-unpublished" title="Page non publiée">TP01-Installation-Proxmox</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

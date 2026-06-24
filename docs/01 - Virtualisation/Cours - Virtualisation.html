@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours - Virtualisation — AdmSys</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link active">Cours - Virtualisation</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><p>﻿# Virtualisation</p>
+<blockquote>
+<p>Voir aussi : <a href="../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a> · <span class="link-unpublished" title="Page non publiée">Architecture</span> · <span class="link-unpublished" title="Page non publiée">TP01-Installation-Proxmox</span></p>
+</blockquote>
+<h2>Définition</h2>
+<p>La virtualisation consiste à exécuter plusieurs systèmes d'exploitation sur un même matériel physique.</p>
+<h2>Objectifs</h2>
+<ul>
+<li>Mutualiser le matériel</li>
+<li>Isoler les services</li>
+<li>Faciliter les sauvegardes</li>
+<li>Réduire les coûts</li>
+</ul>
+<h2>Concepts importants</h2>
+<h3>Hôte</h3>
+<p>Machine physique qui exécute l'hyperviseur.</p>
+<h3>Machine virtuelle (VM)</h3>
+<p>Ordinateur simulé, avec son propre OS, CPU, RAM et disque virtuels.</p>
+<h3>Snapshot</h3>
+<p>Capture instantanée de l'état d'une VM. Permet un retour arrière rapide avant une modification risquée.</p>
+<h3>Hyperviseur</h3>
+<p>Logiciel qui héberge et gère les VM. Voir <a href="../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a>.</p>
+<h2>Hyperviseurs connus</h2>
+<ul>
+<li>VMware ESXi</li>
+<li>Hyper-V</li>
+<li>Proxmox</li>
+</ul>
+<h2>À retenir</h2>
+<p>Les entreprises utilisent principalement :</p>
+<ul>
+<li>VMware (historique, entreprises matures)</li>
+<li>Hyper-V (écosystème Microsoft)</li>
+<li>Proxmox (open source, adoption croissante)</li>
+</ul>
+<h2>Bonnes pratiques</h2>
+<ul>
+<li>Toujours faire un snapshot avant une modification majeure</li>
+<li>Ne pas laisser les snapshots s'accumuler (impact performances)</li>
+<li>Dimensionner correctement RAM et CPU</li>
+<li>Séparer les réseaux (management, production, stockage)</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><span class="link-unpublished" title="Page non publiée">Cours - Réseaux</span></td>
+</tr>
+<tr>
+<td>TP associé</td>
+<td><span class="link-unpublished" title="Page non publiée">TP01-Installation-Proxmox</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>
