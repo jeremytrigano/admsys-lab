@@ -108,6 +108,15 @@ article pre {
   border: 1px solid var(--border);
 }
 
+article img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
 .link-unpublished {
   color: var(--unpublished);
   border-bottom: 1px dashed var(--unpublished);
