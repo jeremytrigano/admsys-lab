@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP01-Installation-Proxmox — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link active">TP01-Installation-Proxmox</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP01 — Installation Proxmox</h1>
+<blockquote>
+<p>Théorie : <a href="../../01 - Virtualisation/Cours - Virtualisation.html">Cours - Virtualisation</a> · <a href="../../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a><br />
+Captures : <code>99-Captures/TP01/</code></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Installer un hyperviseur de type 1 sur le mini-PC et préparer l'environnement de virtualisation.</p>
+<p>À la fin du TP :</p>
+<pre><code class="language-text">SER8
+└── Proxmox VE
+</code></pre>
+<h2>Pourquoi Proxmox ?</h2>
+<p>Dans une entreprise, il est rare qu'un serveur physique n'exécute qu'un seul service.</p>
+<p>La virtualisation permet :</p>
+<ul>
+<li>d'exécuter plusieurs serveurs sur une même machine ;</li>
+<li>d'isoler les services ;</li>
+<li>de simplifier les sauvegardes ;</li>
+<li>de faciliter les tests.</li>
+</ul>
+<p>Dans ce laboratoire, Proxmox servira à héberger :</p>
+<pre><code class="language-text">SRV-DC01
+WIN11-CLIENT01
+</code></pre>
+<h2>Préparation</h2>
+<p>Télécharger :</p>
+<ul>
+<li>ISO Proxmox VE</li>
+<li>ISO Windows Server 2022</li>
+<li>ISO Windows 11</li>
+<li>ISO VirtIO</li>
+</ul>
+<p>Préparer :</p>
+<ul>
+<li>clé USB bootable</li>
+<li>accès réseau filaire</li>
+</ul>
+<h2>Prérequis</h2>
+<ul>
+<li>[v] Serveur physique compatible virtualisation (VT-x/AMD-V)</li>
+<li>[v] ISO Proxmox VE téléchargée</li>
+<li>[v] Clé USB bootable</li>
+</ul>
+<h2>Installation de Proxmox</h2>
+<p>Démarrer sur la clé USB. Choisir :</p>
+<pre><code class="language-text">Install Proxmox VE
+</code></pre>
+<p>Configurer :</p>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom d'hôte</td>
+<td>pve-sr8.lab.local</td>
+</tr>
+<tr>
+<td>Adresse IP</td>
+<td>192.168.1.200</td>
+</tr>
+<tr>
+<td>Passerelle</td>
+<td>192.168.1.254</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../../99-Captures/TP01/01-installation-terminee.png" />
+<em>Installation réussie, première connexion à l'interface Web Proxmox</em></p>
+<h2>Découverte de l'interface</h2>
+<p>Explorer :</p>
+<pre><code class="language-text">Datacenter
+├── Node
+├── Storage
+├── Network
+└── Shell
+</code></pre>
+<h2>Comprendre vmbr0</h2>
+<p>Proxmox crée automatiquement <code>vmbr0</code>, qui agit comme un switch virtuel. Toutes les VM du laboratoire y seront connectées.</p>
+<p><img alt="" src="../../99-Captures/TP01/02-datacenter-vmbr0.png" />
+<em>Bridge vmbr0</em></p>
+<h2>Import des ISO</h2>
+<p>Téléverser Windows Server 2022, Windows 11 et VirtIO dans <code>local → ISO Images</code>.
+ <img alt="" src="../../99-Captures/TP01/03-bibliotheque-iso.png" />
+ <em>Bibliothèque ISO</em></p>
+<h2>Résultat attendu</h2>
+<pre><code class="language-text">Proxmox
+├── Stockage configuré
+├── Réseau configuré
+└── ISO importées
+</code></pre>
+<h2>Validation</h2>
+<ul>
+<li>[v] Proxmox installé et accessible (<code>https://192.168.1.200:8006</code>)</li>
+<li>[v] IP statique configurée</li>
+<li>[v] vmbr0 opérationnel</li>
+<li>[v] ISO importées</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../../01 - Virtualisation/Cours - Virtualisation.html">Cours - Virtualisation</a> · <a href="../../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <span class="link-unpublished" title="Page non publiée">TP02-Creation-SRV-DC01</span></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><span class="link-unpublished" title="Page non publiée">Cours - Réseaux</span></td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../01 - Virtualisation/Cours - Virtualisation.html">Cours - Virtualisation</a> · <a href="../../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

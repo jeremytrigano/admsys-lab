@@ -8,5 +8,10 @@
     "path": "01 - Virtualisation/Cours - Virtualisation",
     "title": "Cours - Virtualisation",
     "html": "01 - Virtualisation/Cours - Virtualisation.html"
+  },
+  {
+    "path": "01 - Virtualisation/TP/TP01-Installation-Proxmox",
+    "title": "TP01-Installation-Proxmox",
+    "html": "01 - Virtualisation/TP/TP01-Installation-Proxmox.html"
   }
 ]

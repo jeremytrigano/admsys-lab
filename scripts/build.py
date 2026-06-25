@@ -100,10 +100,32 @@ def relative_html_path(from_key: str, to_key: str) -> str:
 pages_global = {}
 
 
+def convert_obsidian_embeds(text: str) -> str:
+    def repl(m):
+        raw = m.group(1).strip()
+        if "|" in raw:
+            path, alt = raw.split("|", 1)
+            return f"![{alt.strip()}]({path.strip()})"
+        return f"![]({raw})"
+    return re.sub(r"!\[\[([^\]]+)\]\]", repl, text)
+
+
 def convert_wikilinks(text: str, current_key: str) -> str:
     def repl(m):
         return wikilink_to_html(m, current_key, pages_global)
-    return re.sub(r"\[\[([^\]]+)\]\]", repl, text)
+    return re.sub(r"(?<!!)\[\[([^\]]+)\]\]", repl, text)
+
+
+IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp"}
+
+
+def copy_content_assets():
+    for src in CONTENT.rglob("*"):
+        if src.is_file() and src.suffix.lower() in IMAGE_EXTS:
+            rel = src.relative_to(CONTENT)
+            dest = DOCS / rel
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(str(src), str(dest))
 
 
 def build_navigation(pages: dict) -> list:
@@ -219,7 +241,7 @@ def index_template(nav_items: list) -> str:
 
 def check_links(pages: dict) -> list:
     issues = []
-    wikilink_re = re.compile(r"\[\[([^\]]+)\]\]")
+    wikilink_re = re.compile(r"(?<!!)\[\[([^\]]+)\]\]")
     for key, md_file in pages.items():
         text = md_file.read_text(encoding="utf-8")
         for m in wikilink_re.finditer(text):
@@ -227,7 +249,11 @@ def check_links(pages: dict) -> list:
             if resolve_wikilink(raw, key, pages) is None:
                 display = raw.split("|")[-1].strip()
                 issues.append({"file": key, "link": raw, "display": display})
-        # Images markdown
+        for img in re.findall(r"!\[\[([^\]]+)\]\]", text):
+            img = img.split("|", 1)[0].strip()
+            img_path = (md_file.parent / img).resolve()
+            if not img_path.exists():
+                issues.append({"file": key, "type": "image", "link": img})
         for img in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text):
             img_path = (md_file.parent / img).resolve()
             if not img_path.exists():
@@ -240,9 +266,8 @@ def main():
     pages = collect_pages()
     pages_global = pages
 
-    if DOCS.exists():
-        shutil.rmtree(DOCS)
-    DOCS.mkdir()
+    if not DOCS.exists():
+        DOCS.mkdir()
 
     nav = build_navigation(pages)
     NAV_FILE.write_text(json.dumps(nav, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -258,8 +283,11 @@ def main():
         else:
             shutil.copy2(str(item), str(dest))
 
+    copy_content_assets()
+
     for key, md_file in pages.items():
         text = md_file.read_text(encoding="utf-8")
+        text = convert_obsidian_embeds(text)
         text = convert_wikilinks(text, key)
         md_ext.reset()
         body = md_ext.convert(text)
