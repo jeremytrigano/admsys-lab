@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP03-Creation-WIN11-CLIENT01 — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link active">TP03-Creation-WIN11-CLIENT01</a></li><li><a href="../../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li><a href="../../Architecture.html" class="nav-link">Architecture</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP03 — Création WIN11-CLIENT01</h1>
+<blockquote>
+<p>Théorie : <a href="../../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a> · <a href="../../Architecture.html">Architecture</a><br />
+Captures : <code>99-Captures/TP03/</code> · Prérequis : <span class="link-unpublished" title="Page non publiée">TP02-Creation-SRV-DC01</span></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Créer un poste utilisateur destiné à rejoindre le domaine Active Directory.</p>
+<p>À la fin du TP :</p>
+<pre><code class="language-text">Proxmox
+├── SRV-DC01       (192.168.1.210)
+└── WIN11-CLIENT01 (192.168.1.211)
+</code></pre>
+<h2>Création de la VM</h2>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom</td>
+<td>WIN11-CLIENT01</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>101</td>
+</tr>
+</tbody>
+</table>
+<h2>Configuration système</h2>
+<pre><code class="language-text">Machine : q35
+BIOS : OVMF
+TPM : Oui
+QEMU Agent : Oui
+</code></pre>
+<h2>Ressources</h2>
+<pre><code class="language-text">CPU : 2 vCPU
+RAM : 8 Go
+Disque : 80 Go
+</code></pre>
+<h2>Réseau</h2>
+<pre><code class="language-text">vmbr0
+VirtIO
+</code></pre>
+<h3>Capture recommandée</h3>
+<p><img alt="" src="../../99-Captures/TP03/01-creation-vm.png" />
+<em>Création VM terminé</em></p>
+<h2>Installation Windows 11</h2>
+<p>Choisir <code>Windows 11 Pro</code>.</p>
+<h2>Installation du pilote réseau VirtIO</h2>
+<p>Pendant l'OOBE : <strong>Installer un pilote</strong> → <code>NetKVM\w11\amd64</code></p>
+<h2>Renommage</h2>
+<pre><code class="language-text">WIN11-CLIENT01
+</code></pre>
+<h2>Configuration IP</h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP</td>
+<td>192.168.1.211</td>
+</tr>
+<tr>
+<td>Masque</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Passerelle</td>
+<td>192.168.1.254</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>192.168.1.210</td>
+</tr>
+</tbody>
+</table>
+<p>Le DNS pointe déjà vers le futur contrôleur de domaine.</p>
+<h2>Validation</h2>
+<p>Tester :</p>
+<pre><code class="language-powershell">ping 192.168.1.210
+</code></pre>
+<h2>Snapshot</h2>
+<p>Créer le snapshot <code>FreshInstall</code>.</p>
+<p><img alt="" src="../../99-Captures/TP03/02-bureau-win11.png" />
+<em>Bureau Windows 11 avec nom du PC, adresse IP et connectivité réseau</em></p>
+<h2>Prérequis</h2>
+<ul>
+<li>[v] <span class="link-unpublished" title="Page non publiée">TP02-Creation-SRV-DC01</span> validé</li>
+<li>[v] ISO Windows 11 et VirtIO disponibles sur Proxmox</li>
+</ul>
+<h2>Validation finale</h2>
+<ul>
+<li>[v] VM WIN11-CLIENT01 créée (ID 101)</li>
+<li>[v] Windows 11 installé et renommé</li>
+<li>[v] IP statique <code>192.168.1.211</code> configurée</li>
+<li>[v] Connectivité vers SRV-DC01 vérifiée</li>
+<li>[v] Snapshot <code>FreshInstall</code> créé</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><span class="link-unpublished" title="Page non publiée">TP02-Creation-SRV-DC01</span></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html">TP04-Promotion-DC</a></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><span class="link-unpublished" title="Page non publiée">Cours - Réseaux</span></td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../02 - Active Directory/Cours - Active Directory.html">Cours - Active Directory</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

@@ -26,11 +26,22 @@ def collect_pages():
     return pages
 
 
+def normalize_wikilink(raw: str) -> tuple[str, str]:
+    raw = raw.replace("\\|", "|").strip()
+    if "|" in raw:
+        target, display = raw.split("|", 1)
+        return target.strip(), display.strip()
+    return raw, raw.split("/")[-1]
+
+
 def resolve_wikilink(link: str, current_key: str, pages: dict) -> Optional[str]:
     """Résout un lien Obsidian vers une clé de page publiée, ou None."""
-    link = link.strip()
+    link = link.replace("\\|", "|").strip()
     if "|" in link:
         link = link.split("|", 1)[0].strip()
+
+    if link in pages:
+        return link
 
   # Chemin relatif explicite
     if "/" in link or link.startswith(".."):
@@ -60,13 +71,18 @@ def resolve_wikilink(link: str, current_key: str, pages: dict) -> Optional[str]:
                 return key
             if Path(key).name == cand or Path(key).name == cand + ".md":
                 return key
+
+    link_stem = Path(link).stem
+    for key in pages:
+        if Path(key).stem == link_stem:
+            return key
     return None
 
 
 def wikilink_to_html(match, current_key: str, pages: dict) -> str:
     raw = match.group(1)
-    display = raw.split("|", 1)[1].strip() if "|" in raw else raw.split("/")[-1]
-    target_key = resolve_wikilink(raw, current_key, pages)
+    target_raw, display = normalize_wikilink(raw)
+    target_key = resolve_wikilink(target_raw, current_key, pages)
     if target_key:
         href = relative_html_path(current_key, target_key)
         return f'<a href="{href}">{display}</a>'

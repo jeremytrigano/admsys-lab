@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture — AdmSys</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="./index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li><a href="02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li><a href="Architecture.html" class="nav-link active">Architecture</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>Architecture</h1>
+<blockquote>
+<p>Laboratoire SER8 — <span class="link-unpublished" title="Page non publiée">README</span> · <span class="link-unpublished" title="Page non publiée">Inventaire</span> · <span class="link-unpublished" title="Page non publiée">Procedures</span> · <span class="link-unpublished" title="Page non publiée">Projet final - ACME Industries</span></p>
+</blockquote>
+<h2>Schéma réseau</h2>
+<pre><code class="language-text">                    Internet
+                        │
+                   [Routeur]
+                        │
+              192.168.1.0/24
+                        │
+        ┌───────────────┼───────────────┐
+        │               │               │
+     PVE-SR8        SRV-DC01      WIN11-CLIENT01
+  192.168.1.200   192.168.1.210   192.168.1.211
+   (Proxmox)      (DC/DNS/DHCP)   (Poste client)
+</code></pre>
+<h2>Machines</h2>
+<h3>PVE-SR8 — Hyperviseur Proxmox</h3>
+<ul>
+<li>Hôte : <code>pve-sr8.lab.local</code></li>
+<li>IP : <code>192.168.1.200/24</code></li>
+<li>Passerelle : <code>192.168.1.254</code></li>
+</ul>
+<h3>SRV-DC01 — Contrôleur de domaine</h3>
+<ul>
+<li>IP : <code>192.168.1.210</code></li>
+<li>OS : Windows Server 2022 · VM ID : 100</li>
+<li>Services : AD, DNS, DHCP</li>
+<li>Annuaire : OU Direction, Production, Comptabilité — <a href="02 - Active Directory/TP/TP05-Creation-OU.html">TP05</a></li>
+</ul>
+<h3>WIN11-CLIENT01 — Poste client</h3>
+<ul>
+<li>IP : <code>192.168.1.211</code></li>
+<li>OS : Windows 11 Pro · VM ID : 101</li>
+<li>Domaine : <code>lab.local</code></li>
+</ul>
+<h3>DEBIAN01 — Serveur Linux <em>(prévu)</em></h3>
+<ul>
+<li>Rôle : services Linux (module 05)</li>
+<li>OS : Debian</li>
+</ul>
+<h2>Domaine</h2>
+<ul>
+<li>Nom : <code>lab.local</code></li>
+<li>NetBIOS : <code>LAB</code></li>
+<li>Structure AD (<a href="02 - Active Directory/TP/TP05-Creation-OU.html">TP05</a> validé) :</li>
+</ul>
+<pre><code class="language-text">lab.local
+├── Direction
+├── Production
+└── Comptabilité
+</code></pre>
+<h2>TP par couche</h2>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>TP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtualisation</td>
+<td><a href="01 - Virtualisation/TP/TP01-Installation-Proxmox.html">TP01</a> · <span class="link-unpublished" title="Page non publiée">TP02</span> · <a href="01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html">TP03</a></td>
+</tr>
+<tr>
+<td>Active Directory</td>
+<td><a href="02 - Active Directory/TP/TP04-Promotion-DC.html">TP04</a> · <a href="02 - Active Directory/TP/TP05-Creation-OU.html">TP05</a> · <a href="02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html">TP06</a> · <a href="02 - Active Directory/TP/TP07-Jonction-poste-client.html">TP07</a></td>
+</tr>
+<tr>
+<td>DNS et DHCP</td>
+<td><span class="link-unpublished" title="Page non publiée">TP08</span> · <span class="link-unpublished" title="Page non publiée">TP09</span></td>
+</tr>
+<tr>
+<td>Réseau</td>
+<td><span class="link-unpublished" title="Page non publiée">TP10</span></td>
+</tr>
+</tbody>
+</table>
+<h2>Évolution prévue</h2>
+<ul>
+<li>[ ] DEBIAN01 (module 05)</li>
+<li>[ ] Segmentation réseau (TP10)</li>
+<li>[ ] GPO et serveur de fichiers (module 04)</li>
+<li>[ ] Sauvegardes (module 09)</li>
+<li>[ ] Microsoft 365 / Entra ID (module 08)</li>
+</ul></article>
+    </main>
+  </div>
+</body>
+</html>

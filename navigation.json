@@ -15,6 +15,11 @@
     "html": "01 - Virtualisation/TP/TP01-Installation-Proxmox.html"
   },
   {
+    "path": "01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01",
+    "title": "TP03-Creation-WIN11-CLIENT01",
+    "html": "01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html"
+  },
+  {
     "path": "02 - Active Directory/Cours - Active Directory",
     "title": "Cours - Active Directory",
     "html": "02 - Active Directory/Cours - Active Directory.html"
@@ -43,5 +48,10 @@
     "path": "02 - Active Directory/TP/TP07-Jonction-poste-client",
     "title": "TP07-Jonction-poste-client",
     "html": "02 - Active Directory/TP/TP07-Jonction-poste-client.html"
+  },
+  {
+    "path": "Architecture",
+    "title": "Architecture",
+    "html": "./Architecture.html"
   }
 ]
