@@ -13,5 +13,35 @@
     "path": "01 - Virtualisation/TP/TP01-Installation-Proxmox",
     "title": "TP01-Installation-Proxmox",
     "html": "01 - Virtualisation/TP/TP01-Installation-Proxmox.html"
+  },
+  {
+    "path": "02 - Active Directory/Cours - Active Directory",
+    "title": "Cours - Active Directory",
+    "html": "02 - Active Directory/Cours - Active Directory.html"
+  },
+  {
+    "path": "02 - Active Directory/Cours - Authentification Kerberos",
+    "title": "Cours - Authentification Kerberos",
+    "html": "02 - Active Directory/Cours - Authentification Kerberos.html"
+  },
+  {
+    "path": "02 - Active Directory/TP/TP04-Promotion-DC",
+    "title": "TP04-Promotion-DC",
+    "html": "02 - Active Directory/TP/TP04-Promotion-DC.html"
+  },
+  {
+    "path": "02 - Active Directory/TP/TP05-Creation-OU",
+    "title": "TP05-Creation-OU",
+    "html": "02 - Active Directory/TP/TP05-Creation-OU.html"
+  },
+  {
+    "path": "02 - Active Directory/TP/TP06-Utilisateurs-et-groupes",
+    "title": "TP06-Utilisateurs-et-groupes",
+    "html": "02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html"
+  },
+  {
+    "path": "02 - Active Directory/TP/TP07-Jonction-poste-client",
+    "title": "TP07-Jonction-poste-client",
+    "html": "02 - Active Directory/TP/TP07-Jonction-poste-client.html"
   }
 ]

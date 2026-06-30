@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP07-Jonction-poste-client — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link active">TP07-Jonction-poste-client</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP07 — Jonction du poste client</h1>
+<blockquote>
+<p>Théorie : <a href="../../02 - Active Directory/Cours - Active Directory.html">Cours - Active Directory</a><br />
+Captures : <code>99-Captures/TP07/</code> · Prérequis : <a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html">TP06-Utilisateurs-et-groupes</a></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Joindre WIN11-CLIENT01 au domaine <code>lab.local</code> et valider l'authentification d'un utilisateur du domaine.</p>
+<h2>Architecture</h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Poste</td>
+<td>WIN11-CLIENT01</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>192.168.1.211</td>
+</tr>
+<tr>
+<td>Domaine</td>
+<td>lab.local</td>
+</tr>
+<tr>
+<td>DC</td>
+<td>SRV-DC01 (192.168.1.210)</td>
+</tr>
+</tbody>
+</table>
+<h2>Prérequis</h2>
+<ul>
+<li>[v] <a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html">TP06-Utilisateurs-et-groupes</a> validé</li>
+<li>[v] WIN11-CLIENT01 opérationnel</li>
+<li>[v] DNS du client pointant vers 192.168.1.210</li>
+</ul>
+<h2>Étapes</h2>
+<h3>1. Vérification de la résolution</h3>
+<pre><code class="language-powershell">nslookup lab.local
+ping srv-dc01.lab.local
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP07/01-verification-dns.png" /></p>
+<h3>2. Jonction au domaine</h3>
+<p>Paramètres → Système → Informations système → Domaine ou groupe de travail
+Rejoindre un domaine → <code>lab.local</code></p>
+<p><img alt="" src="../../99-Captures/TP07/02-jonction-domaine.png" /></p>
+<h3>3. Connexion utilisateur domaine</h3>
+<p>Se connecter avec un compte utilisateur créé au TP06.</p>
+<p><img alt="" src="../../99-Captures/TP07/03-connexion-domaine.png" /></p>
+<h2>Validation</h2>
+<ul>
+<li>[v] Poste joint au domaine <code>lab.local</code></li>
+<li>[v] Redémarrage effectué</li>
+<li>[v] Connexion utilisateur domaine réussie</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html">TP06-Utilisateurs-et-groupes</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <span class="link-unpublished" title="Page non publiée">TP08-DNS</span></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><span class="link-unpublished" title="Page non publiée">Cours - GPO</span></td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../02 - Active Directory/Cours - Active Directory.html">Cours - Active Directory</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

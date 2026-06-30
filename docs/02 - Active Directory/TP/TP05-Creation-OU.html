@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP05-Creation-OU — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link active">TP05-Creation-OU</a></li><li><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP05 — Création des OU</h1>
+<blockquote>
+<p>Théorie : <a href="../../02 - Active Directory/Cours - Active Directory.html">Cours - Active Directory</a><br />
+Captures : <code>99-Captures/TP05/</code> · Prérequis : <a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html">TP04-Promotion-DC</a></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Structurer l'annuaire Active Directory avec des unités d'organisation adaptées au laboratoire.</p>
+<h2>Structure cible</h2>
+<pre><code class="language-text">lab.local
+├── Direction
+├── Production
+└── Comptabilité
+</code></pre>
+<h2>Prérequis</h2>
+<ul>
+<li>[v] <a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html">TP04-Promotion-DC</a> validé</li>
+<li>[v] Accès administrateur au domaine</li>
+</ul>
+<h2>Étapes</h2>
+<h3>1. Création des OU</h3>
+<p>Créer les trois OU dans Active Directory Users and Computers.</p>
+<p><img alt="" src="../../99-Captures/TP05/01-creation-ou.png" /></p>
+<h3>2. Vérification</h3>
+<pre><code class="language-powershell">Get-ADOrganizationalUnit -Filter * | Select-Object Name, DistinguishedName
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP05/02-verification-ou.png" /></p>
+<h2>Bonnes pratiques</h2>
+<ul>
+<li>Structurer par fonction, pas par personne</li>
+<li>Nommer les OU de façon explicite</li>
+<li>Documenter le schéma dans <span class="link-unpublished" title="Page non publiée">Architecture</span></li>
+</ul>
+<h2>Validation</h2>
+<ul>
+<li>[v] OU Direction créée</li>
+<li>[v] OU Production créée</li>
+<li>[v] OU Comptabilité créée</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html">TP04-Promotion-DC</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html">TP06-Utilisateurs-et-groupes</a></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../02 - Active Directory/Cours - Active Directory.html">Cours - Active Directory</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

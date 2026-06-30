@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours - Authentification Kerberos — AdmSys</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link active">Cours - Authentification Kerberos</a></li><li><a href="../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>Authentification Kerberos</h1>
+<blockquote>
+<p>Voir aussi : <a href="../02 - Active Directory/Cours - Active Directory.html">Cours - Active Directory</a> · <span class="link-unpublished" title="Page non publiée">Préparation entretiens#02 — Active Directory</span></p>
+</blockquote>
+<h2>Principe</h2>
+<pre><code class="language-text">Utilisateur → demande TGT au DC → reçoit ticket → accès aux ressources
+</code></pre>
+<p>Kerberos est le protocole d'authentification par défaut dans un domaine Windows.</p>
+<h2>Flux simplifié</h2>
+<pre><code class="language-text">Utilisateur → AD → Validation Kerberos → Accès
+</code></pre>
+<ol>
+<li>Le poste contacte un contrôleur de domaine</li>
+<li>Le client demande un <strong>TGT</strong> (Ticket Granting Ticket)</li>
+<li>Le DC valide les identifiants</li>
+<li>Le TGT permet d'obtenir des tickets de service pour les ressources</li>
+<li>Pas de ressaisie du mot de passe à chaque accès</li>
+</ol>
+<h2>Port associé</h2>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>88</td>
+<td>Kerberos</td>
+</tr>
+</tbody>
+</table>
+<h2>À retenir pour les entretiens</h2>
+<ul>
+<li>Kerberos = authentification mutuelle client/serveur</li>
+<li>Le TGT a une durée de vie limitée</li>
+<li>La synchronisation horaire entre client et DC est critique (dérive &gt; 5 min = échec)</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../02 - Active Directory/Cours - Active Directory.html">Cours - Active Directory</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../02 - Active Directory/TP/TP04-Promotion-DC.html">TP04-Promotion-DC</a></td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../02 - Active Directory/Cours - Active Directory.html">Cours - Active Directory</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

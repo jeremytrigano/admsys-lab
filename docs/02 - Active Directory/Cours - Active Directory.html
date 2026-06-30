@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours - Active Directory — AdmSys</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../02 - Active Directory/Cours - Active Directory.html" class="nav-link active">Cours - Active Directory</a></li><li><a href="../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><p>﻿# Active Directory</p>
+<blockquote>
+<p>Voir aussi : <span class="link-unpublished" title="Page non publiée">Cours - DNS</span> · <span class="link-unpublished" title="Page non publiée">Cours - GPO</span> · <a href="../02 - Active Directory/TP/TP04-Promotion-DC.html">TP04-Promotion-DC</a> · <span class="link-unpublished" title="Page non publiée">Préparation entretiens#02 — Active Directory</span></p>
+</blockquote>
+<h2>Définition</h2>
+<p>Service d'annuaire Microsoft pour centraliser l'authentification et la gestion des identités.</p>
+<h2>Rôle</h2>
+<p>Permet :</p>
+<ul>
+<li>Authentification</li>
+<li>Gestion des utilisateurs</li>
+<li>Gestion des groupes</li>
+<li>Gestion des postes</li>
+</ul>
+<h2>Architecture</h2>
+<h3>Domaine</h3>
+<p>Unité de sécurité et d'administration.</p>
+<p>Exemple : <code>lab.local</code></p>
+<h3>Forêt</h3>
+<p>Ensemble de domaines partageant un schéma commun.</p>
+<h3>Contrôleur de domaine (DC)</h3>
+<p>Serveur hébergeant les services AD DS.</p>
+<h3>OU (Unité d'organisation)</h3>
+<p>Conteneur logique pour structurer les objets.</p>
+<p>Exemple :</p>
+<pre><code>lab.local
+├── Direction
+├── Production
+└── Comptabilité
+</code></pre>
+<h3>Groupe</h3>
+<p>Permet d'attribuer des droits de manière centralisée. Toujours privilégier les groupes aux droits directs.</p>
+<h3>Utilisateur</h3>
+<p>Compte permettant la connexion aux ressources du domaine.</p>
+<h2>Authentification Kerberos</h2>
+<p>Voir le cours dédié : <a href="../02 - Active Directory/Cours - Authentification Kerberos.html">Cours - Authentification Kerberos</a>.</p>
+<h2>Réplication</h2>
+<p>Les DC d'un même domaine répliquent l'annuaire entre eux (multi-master).</p>
+<h2>Ports utilisés</h2>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>53</td>
+<td>DNS</td>
+</tr>
+<tr>
+<td>88</td>
+<td>Kerberos → <a href="../02 - Active Directory/Cours - Authentification Kerberos.html">Cours - Authentification Kerberos</a></td>
+</tr>
+<tr>
+<td>389</td>
+<td>LDAP</td>
+</tr>
+<tr>
+<td>445</td>
+<td>SMB</td>
+</tr>
+<tr>
+<td>636</td>
+<td>LDAPS</td>
+</tr>
+</tbody>
+</table>
+<h2>Flux d'authentification</h2>
+<p>Voir <a href="../02 - Active Directory/Cours - Authentification Kerberos.html">Cours - Authentification Kerberos</a>.</p>
+<h2>Bonnes pratiques</h2>
+<ul>
+<li>Utiliser des groupes pour les droits</li>
+<li>Éviter les droits directs sur les utilisateurs</li>
+<li>Structurer les OU par fonction, pas par personne</li>
+<li>Avoir au minimum 2 DC en production</li>
+<li>Protéger les comptes administrateurs → <span class="link-unpublished" title="Page non publiée">Cours - Comptes privilégiés</span></li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><span class="link-unpublished" title="Page non publiée">TP03-Creation-WIN11-CLIENT01</span></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <span class="link-unpublished" title="Page non publiée">Cours - DNS</span></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><span class="link-unpublished" title="Page non publiée">Cours - Comptes privilégiés</span> · <span class="link-unpublished" title="Page non publiée">Cours - PowerShell Scripts AD</span></td>
+</tr>
+<tr>
+<td>TP associé</td>
+<td><a href="../02 - Active Directory/TP/TP04-Promotion-DC.html">TP04-Promotion-DC</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>
