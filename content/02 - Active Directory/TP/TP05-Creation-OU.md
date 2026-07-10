@@ -1,4 +1,4 @@
-# TP05 — Création des OU
+# TP05 - Création des OU
 
 > Théorie : [[../../02 - Active Directory/Cours - Active Directory]]  
 > Captures : `99-Captures/TP05/` · Prérequis : [[TP04-Promotion-DC]]
@@ -57,7 +57,7 @@ Get-ADOrganizationalUnit -Filter * | Select-Object Name, DistinguishedName
 |-------|------|
 | Prérequis | [[TP04-Promotion-DC]] |
 | Suite recommandée | → [[TP06-Utilisateurs-et-groupes]] |
-| Branches | — |
+| Branches | - |
 | Théorie | [[../../02 - Active Directory/Cours - Active Directory]] |
 
 > Suivi : [[../../00 - Administration du parcours/Progression]]

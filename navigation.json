@@ -15,6 +15,11 @@
     "html": "01 - Virtualisation/TP/TP01-Installation-Proxmox.html"
   },
   {
+    "path": "01 - Virtualisation/TP/TP02-Creation-SRV-DC01",
+    "title": "TP02-Creation-SRV-DC01",
+    "html": "01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html"
+  },
+  {
     "path": "01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01",
     "title": "TP03-Creation-WIN11-CLIENT01",
     "html": "01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html"
@@ -48,6 +53,96 @@
     "path": "02 - Active Directory/TP/TP07-Jonction-poste-client",
     "title": "TP07-Jonction-poste-client",
     "html": "02 - Active Directory/TP/TP07-Jonction-poste-client.html"
+  },
+  {
+    "path": "03 - DNS et DHCP/Cours - DHCP",
+    "title": "Cours - DHCP",
+    "html": "03 - DNS et DHCP/Cours - DHCP.html"
+  },
+  {
+    "path": "03 - DNS et DHCP/Cours - DNS",
+    "title": "Cours - DNS",
+    "html": "03 - DNS et DHCP/Cours - DNS.html"
+  },
+  {
+    "path": "03 - DNS et DHCP/TP/TP08-DNS",
+    "title": "TP08-DNS",
+    "html": "03 - DNS et DHCP/TP/TP08-DNS.html"
+  },
+  {
+    "path": "03 - DNS et DHCP/TP/TP09-DHCP",
+    "title": "TP09-DHCP",
+    "html": "03 - DNS et DHCP/TP/TP09-DHCP.html"
+  },
+  {
+    "path": "04 - Gestion Windows/Cours - Fichiers et Permissions",
+    "title": "Cours - Fichiers et Permissions",
+    "html": "04 - Gestion Windows/Cours - Fichiers et Permissions.html"
+  },
+  {
+    "path": "04 - Gestion Windows/Cours - GPO",
+    "title": "Cours - GPO",
+    "html": "04 - Gestion Windows/Cours - GPO.html"
+  },
+  {
+    "path": "04 - Gestion Windows/Cours - PowerShell Bases",
+    "title": "Cours - PowerShell Bases",
+    "html": "04 - Gestion Windows/Cours - PowerShell Bases.html"
+  },
+  {
+    "path": "04 - Gestion Windows/Cours - PowerShell Scripts AD",
+    "title": "Cours - PowerShell Scripts AD",
+    "html": "04 - Gestion Windows/Cours - PowerShell Scripts AD.html"
+  },
+  {
+    "path": "04 - Gestion Windows/Cours - PowerShell Scripts Administration",
+    "title": "Cours - PowerShell Scripts Administration",
+    "html": "04 - Gestion Windows/Cours - PowerShell Scripts Administration.html"
+  },
+  {
+    "path": "04 - Gestion Windows/TP/TP10 - Serveur de fichiers",
+    "title": "TP10 - Serveur de fichiers",
+    "html": "04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html"
+  },
+  {
+    "path": "04 - Gestion Windows/TP/TP11 - GPO",
+    "title": "TP11 - GPO",
+    "html": "04 - Gestion Windows/TP/TP11 - GPO.html"
+  },
+  {
+    "path": "04 - Gestion Windows/TP/TP12 - PowerShell",
+    "title": "TP12 - PowerShell",
+    "html": "04 - Gestion Windows/TP/TP12 - PowerShell.html"
+  },
+  {
+    "path": "05 - Linux/Cours 01 - Linux",
+    "title": "Cours 01 - Linux",
+    "html": "05 - Linux/Cours 01 - Linux.html"
+  },
+  {
+    "path": "05 - Linux/Cours 02 - Administration Linux",
+    "title": "Cours 02 - Administration Linux",
+    "html": "05 - Linux/Cours 02 - Administration Linux.html"
+  },
+  {
+    "path": "05 - Linux/Cours 03 - Réseau Linux",
+    "title": "Cours 03 - Réseau Linux",
+    "html": "05 - Linux/Cours 03 - Réseau Linux.html"
+  },
+  {
+    "path": "05 - Linux/Cours 04 - Services Linux",
+    "title": "Cours 04 - Services Linux",
+    "html": "05 - Linux/Cours 04 - Services Linux.html"
+  },
+  {
+    "path": "05 - Linux/TP/TP13 - Installation et découverte Linux",
+    "title": "TP13 - Installation et découverte Linux",
+    "html": "05 - Linux/TP/TP13 - Installation et découverte Linux.html"
+  },
+  {
+    "path": "05 - Linux/TP/TP14 - Administration Linux",
+    "title": "TP14 - Administration Linux",
+    "html": "05 - Linux/TP/TP14 - Administration Linux.html"
   },
   {
     "path": "Architecture",

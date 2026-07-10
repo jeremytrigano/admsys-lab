@@ -1,4 +1,4 @@
-# TP07 — Jonction du poste client
+# TP07 - Jonction du poste client
 
 > Théorie : [[../../02 - Active Directory/Cours - Active Directory]]  
 > Captures : `99-Captures/TP07/` · Prérequis : [[TP06-Utilisateurs-et-groupes]]

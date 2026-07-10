@@ -1,6 +1,6 @@
 # Authentification Kerberos
 
-> Voir aussi : [[Cours - Active Directory]] · [[00 - Administration du parcours/Préparation entretiens#02 — Active Directory]]
+> Voir aussi : [[Cours - Active Directory]] · [[00 - Administration du parcours/Préparation entretiens#02 - Active Directory]]
 
 ## Principe
 

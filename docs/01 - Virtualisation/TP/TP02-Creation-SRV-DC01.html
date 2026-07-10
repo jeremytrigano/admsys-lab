@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP02-Creation-SRV-DC01 — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link active">TP02-Creation-SRV-DC01</a></li><li><a href="../../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="../../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../../05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="../../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP02 - Création SRV-DC01</h1>
+<blockquote>
+<p>Théorie : <a href="../../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a> · <a href="../../Architecture.html">Architecture</a><br />
+Captures : <code>99-Captures/TP02/</code> · Prérequis : <a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html">TP01-Installation-Proxmox</a></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Créer le premier serveur du laboratoire. Ce serveur deviendra plus tard le contrôleur de domaine, le DNS et l'infrastructure Active Directory.</p>
+<p>À la fin du TP :</p>
+<pre><code class="language-text">Proxmox
+└── SRV-DC01
+</code></pre>
+<h2>Création de la VM</h2>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom</td>
+<td>SRV-DC01</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<h2>Configuration système</h2>
+<pre><code class="language-text">Machine : q35
+BIOS : OVMF
+TPM : Oui
+QEMU Agent : Oui
+</code></pre>
+<h3>Pourquoi ?</h3>
+<ul>
+<li>matériel moderne ;</li>
+<li>UEFI ;</li>
+<li>compatibilité Windows Server 2022.</li>
+</ul>
+<p><img alt="" src="../../99-Captures/TP02/01-system.png" />
+<em>Onglet System configuré</em></p>
+<h2>Configuration disque</h2>
+<pre><code class="language-text">VirtIO SCSI
+80 Go
+Discard
+IO Thread
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP02/02-disk.png" />
+<em>Onglet Disk configuré</em></p>
+<h2>Réseau</h2>
+<pre><code class="language-text">Bridge : vmbr0
+Carte : VirtIO
+</code></pre>
+<h2>Installation Windows Server</h2>
+<p>Choisir :</p>
+<pre><code class="language-text">Windows Server 2022 Standard Evaluation (Desktop Experience)
+</code></pre>
+<h2>Installation des pilotes VirtIO</h2>
+<p>Installer <code>virtio-win-guest-tools.exe</code>.</p>
+<h2>Configuration réseau</h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom</td>
+<td>SRV-DC01</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>192.168.1.210</td>
+</tr>
+<tr>
+<td>Masque</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>Passerelle</td>
+<td>192.168.1.254</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>192.168.1.254</td>
+</tr>
+</tbody>
+</table>
+<h2>Validation</h2>
+<p>Tester :</p>
+<pre><code class="language-powershell">ipconfig
+ping 192.168.1.254
+</code></pre>
+<h2>Snapshot</h2>
+<p>Créer le snapshot <code>FreshInstall</code>.</p>
+<p><img alt="" src="../../99-Captures/TP02/03-srv-dc01-running.png" />
+<em>Vue Proxmox affichant SRV-DC01 allumé et fonctionnel</em></p>
+<h2>Prérequis</h2>
+<ul>
+<li>[v] <a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html">TP01-Installation-Proxmox</a> validé</li>
+<li>[v] ISO Windows Server 2022 et VirtIO disponibles sur Proxmox</li>
+</ul>
+<h2>Validation finale</h2>
+<ul>
+<li>[v] VM SRV-DC01 créée (ID 100)</li>
+<li>[v] Windows Server 2022 installé</li>
+<li>[v] Pilotes VirtIO installés</li>
+<li>[v] IP statique <code>192.168.1.210</code> configurée</li>
+<li>[v] Snapshot <code>FreshInstall</code> créé</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html">TP01-Installation-Proxmox</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html">TP03-Creation-WIN11-CLIENT01</a></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿# Virtualisation
+# Virtualisation
 
 > Voir aussi : [[Cours - Hyperviseurs]] · [[Architecture]] · [[TP/TP01-Installation-Proxmox]]
 
@@ -29,7 +29,7 @@ Capture instantanée de l'état d'une VM. Permet un retour arrière rapide avant
 
 ### Hyperviseur
 
-Logiciel qui héberge et gère les VM. Voir [[Cours - Hyperviseurs]].
+Logiciel qui héberge et gère les VM. Voir [[02-Hyperviseurs]].
 
 ## Hyperviseurs connus
 
@@ -58,7 +58,7 @@ Les entreprises utilisent principalement :
 
 | Étape | Lien |
 |-------|------|
-| Prérequis | — |
+| Prérequis | - |
 | Suite recommandée | → [[Cours - Hyperviseurs]] |
 | Branches | [[../../06 - Réseau/Cours - Réseaux]] |
 | TP associé | [[TP/TP01-Installation-Proxmox]] |

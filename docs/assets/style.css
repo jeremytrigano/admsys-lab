@@ -60,6 +60,23 @@ body {
 .nav-link:hover { color: var(--accent); background: rgba(88, 166, 255, 0.08); }
 .nav-link.active { color: var(--accent); background: rgba(88, 166, 255, 0.12); }
 
+.nav-category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  padding: 1.1rem 0.75rem 0.3rem;
+  list-style: none;
+  border-top: 1px solid var(--border);
+  margin-top: 0.25rem;
+}
+
+.nav-list > .nav-category:first-child,
+.nav-list > .nav-link:first-child + .nav-category {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0.25rem;
+}
+
 .content {
   flex: 1;
   padding: 2rem 3rem;

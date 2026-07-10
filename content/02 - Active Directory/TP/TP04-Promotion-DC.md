@@ -1,4 +1,4 @@
-# TP04 — Promotion du contrôleur de domaine
+# TP04 - Promotion du contrôleur de domaine
 
 > Théorie : [[../../02 - Active Directory/Cours - Active Directory]]  
 > Captures : `99-Captures/TP04/` · Prérequis : [[../../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01]]

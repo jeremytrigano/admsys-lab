@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours - DHCP — AdmSys</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link active">Cours - DHCP</a></li><li><a href="../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>DHCP</h1>
+<blockquote>
+<p>Voir aussi : <a href="../03 - DNS et DHCP/Cours - DNS.html">Cours - DNS</a> · <span class="link-unpublished" title="Page non publiée">Cours - Réseaux</span> · <a href="../03 - DNS et DHCP/TP/TP09-DHCP.html">TP09-DHCP</a> · <span class="link-unpublished" title="Page non publiée">Préparation entretiens#03 - DNS et DHCP</span></p>
+</blockquote>
+<h2>Définition</h2>
+<p>Le DHCP (Dynamic Host Configuration Protocol) attribue automatiquement une configuration réseau aux clients.</p>
+<h2>Fonction</h2>
+<p>Attribuer automatiquement :
+- Adresse IP
+- Masque de sous-réseau
+- Passerelle par défaut
+- Serveurs DNS</p>
+<h2>Processus DORA</h2>
+<pre><code>Discover  →  Le client cherche un serveur DHCP
+Offer     →  Le serveur propose une IP
+Request   →  Le client accepte
+Acknowledge → Le serveur confirme
+</code></pre>
+<h2>Concepts</h2>
+<h3>Scope (étendue)</h3>
+<p>Plage d'adresses disponibles.</p>
+<p>Exemple : <code>192.168.1.100</code> à <code>192.168.1.200</code></p>
+<h3>Bail (lease)</h3>
+<p>Durée pendant laquelle une IP est attribuée à un client.</p>
+<h3>Réservation</h3>
+<p>Adresse IP fixe liée à une adresse MAC.</p>
+<h3>Options DHCP</h3>
+<ul>
+<li>Option 003 : passerelle</li>
+<li>Option 006 : serveurs DNS</li>
+<li>Option 015 : nom de domaine</li>
+</ul>
+<h2>Bonnes pratiques</h2>
+<ul>
+<li>Exclure les adresses des serveurs de la plage dynamique</li>
+<li>Utiliser des réservations pour les serveurs et imprimantes</li>
+<li>Documenter les scopes et exclusions</li>
+<li>Surveiller l'utilisation de la plage (alerte à 80 %)</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../03 - DNS et DHCP/Cours - DNS.html">Cours - DNS</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../04 - Gestion Windows/Cours - GPO.html">Cours - GPO</a></td>
+</tr>
+<tr>
+<td>TP associé</td>
+<td><a href="../03 - DNS et DHCP/TP/TP09-DHCP.html">TP09-DHCP</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

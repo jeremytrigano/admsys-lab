@@ -1,4 +1,4 @@
-# TP01 — Installation Proxmox
+# TP01 - Installation Proxmox
 
 > Théorie : [[../Cours - Virtualisation]] · [[../Cours - Hyperviseurs]]  
 > Captures : `99-Captures/TP01/`

@@ -1,4 +1,4 @@
-# TP06 — Utilisateurs et groupes
+# TP06 - Utilisateurs et groupes
 
 > Théorie : [[../../02 - Active Directory/Cours - Active Directory]]  
 > Captures : `99-Captures/TP06/` · Prérequis : [[TP05-Creation-OU]]

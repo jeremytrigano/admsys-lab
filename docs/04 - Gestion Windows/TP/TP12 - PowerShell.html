@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP12 - PowerShell — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="../../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="../../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link active">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../../05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="../../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP12 - PowerShell</h1>
+<blockquote>
+<p>Théorie : <a href="../../04 - Gestion Windows/Cours - PowerShell Bases.html">Cours - PowerShell Bases</a> · <a href="../../04 - Gestion Windows/Cours - PowerShell Scripts AD.html">Cours - PowerShell Scripts AD</a> · <a href="../../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html">Cours - PowerShell Scripts Administration</a>
+Captures : <code>99-Captures/TP12/</code> · Prérequis : <span class="link-unpublished" title="Page non publiée">TP11-GPO</span></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Découvrir l'administration système avec PowerShell en automatisant plusieurs tâches courantes :</p>
+<ul>
+<li>obtenir des informations sur le système ;</li>
+<li>administrer Active Directory ;</li>
+<li>exporter des données ;</li>
+<li>créer des scripts réutilisables.</li>
+</ul>
+<p>À l'issue de ce TP, vous disposerez d'une première boîte à outils PowerShell pour administrer votre laboratoire.</p>
+<hr />
+<h2>Prérequis</h2>
+<ul>
+<li>[v] <span class="link-unpublished" title="Page non publiée">TP11-GPO</span> validé</li>
+</ul>
+<hr />
+<h1>Étapes</h1>
+<h2>1. Ouverture de PowerShell</h2>
+<p>Sur <strong>SRV-DC01</strong>, ouvrir PowerShell en tant qu'administrateur.</p>
+<p>Vérifier la version installée :</p>
+<pre><code class="language-powershell">$PSVersionTable.PSVersion
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP12/01-version.png" />
+<em>Version de PowerShell</em></p>
+<hr />
+<h2>2. Informations système</h2>
+<p>Afficher quelques informations sur le serveur :</p>
+<pre><code class="language-powershell">Get-ComputerInfo |
+Select-Object WindowsProductName, OsArchitecture, CsTotalPhysicalMemory
+</code></pre>
+<p>Afficher également :</p>
+<pre><code class="language-powershell">Get-PSDrive -PSProvider FileSystem
+</code></pre>
+<p>Repérer :</p>
+<ul>
+<li>les lecteurs disponibles ;</li>
+<li>l'espace libre.</li>
+</ul>
+<p><img alt="" src="../../99-Captures/TP12/02-systeme.png" />
+<em>Informations système et lecteurs</em></p>
+<hr />
+<h2>3. Services Windows</h2>
+<p>Afficher les services démarrés :</p>
+<pre><code class="language-powershell">Get-Service |
+Where-Object {$_.Status -eq &quot;Running&quot;}
+</code></pre>
+<p>Puis les services arrêtés configurés en démarrage automatique :</p>
+<pre><code class="language-powershell">Get-Service |
+Where-Object {
+    $_.Status -eq &quot;Stopped&quot; -and
+    $_.StartType -eq &quot;Automatic&quot;
+}
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP12/03-services.png" />
+<em>Services Windows</em></p>
+<hr />
+<h2>4. Import du module Active Directory</h2>
+<p>Charger le module :</p>
+<pre><code class="language-powershell">Import-Module ActiveDirectory
+</code></pre>
+<p>Vérifier que le module est disponible :</p>
+<pre><code class="language-powershell">Get-Module ActiveDirectory
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP12/04-module.png" />
+<em>Module Active Directory</em></p>
+<hr />
+<h2>5. Lister les utilisateurs</h2>
+<p>Afficher les utilisateurs du domaine :</p>
+<pre><code class="language-powershell">Get-ADUser -Filter *
+</code></pre>
+<p>Afficher uniquement :</p>
+<pre><code class="language-powershell">Get-ADUser -Filter * |
+Select-Object Name, SamAccountName
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP12/05-utilisateurs.png" />
+<em>Liste des utilisateurs</em></p>
+<hr />
+<h2>6. Exporter les utilisateurs</h2>
+<p>Exporter les utilisateurs dans un fichier CSV.</p>
+<p>Créer le dossier :</p>
+<pre><code>C:\Exports
+</code></pre>
+<p>Puis exécuter :</p>
+<pre><code class="language-powershell">Get-ADUser -Filter * -Properties DisplayName, EmailAddress |
+Select-Object Name, DisplayName, EmailAddress |
+Export-Csv C:\Exports\utilisateurs.csv -NoTypeInformation -Encoding UTF8
+</code></pre>
+<p>Ouvrir ensuite le fichier CSV afin de vérifier son contenu.</p>
+<p><img alt="" src="../../99-Captures/TP12/06-export.png" />
+<em>Export CSV</em></p>
+<hr />
+<h2>7. Créer un utilisateur avec PowerShell</h2>
+<p>Créer un nouvel utilisateur :</p>
+<pre><code class="language-powershell">New-ADUser `
+    -Name &quot;Marie Martin&quot; `
+    -SamAccountName &quot;mmartin&quot; `
+    -UserPrincipalName &quot;mmartin@lab.local&quot; `
+    -Path &quot;OU=Production,DC=lab,DC=local&quot; `
+    -AccountPassword (ConvertTo-SecureString &quot;MotDePasse123!&quot; -AsPlainText -Force) `
+    -Enabled $true
+</code></pre>
+<p>Vérifier sa création :</p>
+<pre><code class="language-powershell">Get-ADUser mmartin
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP12/07-create-user.png" />
+<em>Création d'un utilisateur</em></p>
+<hr />
+<h2>8. Ajouter un utilisateur à un groupe</h2>
+<p>Ajouter l'utilisateur au groupe Production :</p>
+<pre><code class="language-powershell">Add-ADGroupMember `
+-Identity &quot;GRP-Production-RW&quot; `
+-Members &quot;mmartin&quot;
+</code></pre>
+<p>Vérifier les membres du groupe :</p>
+<pre><code class="language-powershell">Get-ADGroupMember &quot;GRP-Production-RW&quot;
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP12/08-groupes.png" />
+<em>Ajout à un groupe</em></p>
+<hr />
+<h2>9. Comptes inactifs</h2>
+<p>Lister les comptes n'ayant pas ouvert de session depuis 90 jours :</p>
+<pre><code class="language-powershell">$Date = (Get-Date).AddDays(-90)
+
+Get-ADUser `
+-Filter {LastLogonDate -lt $Date} `
+-Properties LastLogonDate |
+Select-Object Name, SamAccountName, LastLogonDate
+</code></pre>
+<p>Observer le résultat.</p>
+<p><img alt="" src="../../99-Captures/TP12/09-inactifs.png" />
+<em>Comptes inactifs depuis 1 jour</em></p>
+<hr />
+<h2>10. Création d'un script</h2>
+<p>Créer le dossier :</p>
+<pre><code>C:\Scripts
+</code></pre>
+<p>Créer un fichier :</p>
+<pre><code>Inventaire.ps1
+</code></pre>
+<p>Y copier :</p>
+<pre><code class="language-powershell">Get-ComputerInfo |
+Select-Object WindowsProductName, OsArchitecture
+
+Get-PSDrive -PSProvider FileSystem
+
+Get-Service |
+Where-Object {$_.Status -eq &quot;Stopped&quot; -and $_.StartType -eq &quot;Automatic&quot;}
+</code></pre>
+<p>Enregistrer puis exécuter le script :</p>
+<pre><code class="language-powershell">.\Inventaire.ps1
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP12/10-script.png" />
+<em>Premier script PowerShell</em></p>
+<hr />
+<h2>Validation</h2>
+<ul>
+<li>[v] PowerShell est fonctionnel</li>
+<li>[v] Les informations système sont affichées</li>
+<li>[v] Les services Windows sont listés</li>
+<li>[v] Le module Active Directory est chargé</li>
+<li>[v] Les utilisateurs sont exportés au format CSV</li>
+<li>[v] Un utilisateur est créé en PowerShell</li>
+<li>[v] L'utilisateur est ajouté à un groupe</li>
+<li>[v] Les comptes inactifs sont affichés</li>
+<li>[v] Un premier script PowerShell est créé</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><span class="link-unpublished" title="Page non publiée">TP11-GPO</span></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <span class="link-unpublished" title="Page non publiée">Cours - Sauvegardes</span></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts AD.html">Cours - PowerShell Scripts AD</a></td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../04 - Gestion Windows/Cours - PowerShell Bases.html">Cours - PowerShell Bases</a> · <a href="../../04 - Gestion Windows/Cours - PowerShell Scripts AD.html">Cours - PowerShell Scripts AD</a> · <a href="../../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html">Cours - PowerShell Scripts Administration</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

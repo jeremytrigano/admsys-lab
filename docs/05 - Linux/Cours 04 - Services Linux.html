@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours 04 - Services Linux — AdmSys</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../05 - Linux/Cours 04 - Services Linux.html" class="nav-link active">Cours 04 - Services Linux</a></li><li><a href="../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>Services Linux</h1>
+<blockquote>
+<p>Voir aussi : <a href="../05 - Linux/Cours 02 - Administration Linux.html">Cours 02 - Administration Linux</a> · <a href="../05 - Linux/Cours 03 - Réseau Linux.html">Cours 03 - Réseau Linux</a></p>
+</blockquote>
+<h2>systemd</h2>
+<p><code>systemd</code> est le gestionnaire de services utilisé par la majorité des distributions Linux modernes.</p>
+<p>Il gère :</p>
+<ul>
+<li>les services</li>
+<li>le démarrage du système</li>
+<li>les journaux</li>
+<li>les tâches automatiques</li>
+</ul>
+<h2>systemctl</h2>
+<p>Afficher les services :</p>
+<pre><code class="language-bash">systemctl list-units --type=service
+</code></pre>
+<p>Démarrer :</p>
+<pre><code class="language-bash">sudo systemctl start service
+</code></pre>
+<p>Arrêter :</p>
+<pre><code class="language-bash">sudo systemctl stop service
+</code></pre>
+<p>Redémarrer :</p>
+<pre><code class="language-bash">sudo systemctl restart service
+</code></pre>
+<p>Activer au démarrage :</p>
+<pre><code class="language-bash">sudo systemctl enable service
+</code></pre>
+<p>Vérifier l'état :</p>
+<pre><code class="language-bash">systemctl status service
+</code></pre>
+<h2>journalctl</h2>
+<p>Afficher les journaux :</p>
+<pre><code class="language-bash">journalctl
+</code></pre>
+<p>Derniers événements :</p>
+<pre><code class="language-bash">journalctl -xe
+</code></pre>
+<p>Pour un service :</p>
+<pre><code class="language-bash">journalctl -u ssh
+</code></pre>
+<h2>Logs</h2>
+<p>Les journaux sont généralement stockés dans :</p>
+<pre><code class="language-text">/var/log
+</code></pre>
+<p>Exemples :</p>
+<ul>
+<li><code>/var/log/syslog</code></li>
+<li><code>/var/log/auth.log</code></li>
+<li><code>/var/log/messages</code></li>
+</ul>
+<h2>Montage des systèmes de fichiers</h2>
+<p>Afficher les systèmes montés :</p>
+<pre><code class="language-bash">mount
+</code></pre>
+<p>Utilisation du disque :</p>
+<pre><code class="language-bash">df -h
+</code></pre>
+<p>Monter un disque :</p>
+<pre><code class="language-bash">mount /dev/sdb1 /mnt
+</code></pre>
+<p>Configuration permanente :</p>
+<pre><code class="language-text">/etc/fstab
+</code></pre>
+<h2>Services courants</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Fonction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSH</td>
+<td>Administration distante</td>
+</tr>
+<tr>
+<td>Apache</td>
+<td>Serveur Web</td>
+</tr>
+<tr>
+<td>Nginx</td>
+<td>Serveur Web</td>
+</tr>
+<tr>
+<td>Samba</td>
+<td>Partage de fichiers</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>Conteneurs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../05 - Linux/Cours 03 - Réseau Linux.html">Cours 03 - Réseau Linux</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <span class="link-unpublished" title="Page non publiée">Cours - Réseaux</span></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><span class="link-unpublished" title="Page non publiée">11 - Conteneurisation</span></td>
+</tr>
+<tr>
+<td>TP associé</td>
+<td><span class="link-unpublished" title="Page non publiée">TPxx - Services et réseau Linux</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

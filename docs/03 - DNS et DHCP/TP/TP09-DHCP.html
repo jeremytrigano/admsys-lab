@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP09-DHCP — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="../../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="../../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link active">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../../05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="../../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP09 - DHCP</h1>
+<blockquote>
+<p>Théorie : <a href="../../03 - DNS et DHCP/Cours - DHCP.html">Cours - DHCP</a>
+Captures : <code>99-Captures/TP09/</code> · Prérequis : <a href="../../03 - DNS et DHCP/TP/TP08-DNS.html">TP08-DNS</a></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Mettre en place un serveur DHCP dédié au laboratoire Active Directory afin d'attribuer automatiquement les adresses IP aux machines virtuelles.</p>
+<blockquote>
+<p><strong>Pourquoi changer de réseau ?</strong></p>
+<p>Le réseau domestique utilise déjà le serveur DHCP de la Freebox. Afin d'éviter la présence de deux serveurs DHCP sur le même réseau, le laboratoire sera isolé sur un second réseau virtuel Proxmox avec une plage d'adresses dédiée.</p>
+</blockquote>
+<h2>Architecture</h2>
+<h3>Réseau domestique</h3>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Adresse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Freebox</td>
+<td>192.168.1.254</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>192.168.1.2 → 192.168.1.200</td>
+</tr>
+<tr>
+<td>Proxmox</td>
+<td>192.168.1.200</td>
+</tr>
+</tbody>
+</table>
+<h3>Réseau du laboratoire</h3>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Réseau</td>
+<td>192.168.10.0/24</td>
+</tr>
+<tr>
+<td>Serveur DHCP</td>
+<td>SRV-DC01</td>
+</tr>
+<tr>
+<td>Adresse du serveur</td>
+<td>192.168.10.210</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>192.168.10.100 → 192.168.10.199</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>192.168.10.210</td>
+</tr>
+<tr>
+<td>Passerelle</td>
+<td>Aucune (réseau isolé)</td>
+</tr>
+<tr>
+<td>## Prérequis</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>[v] <a href="../../03 - DNS et DHCP/TP/TP08-DNS.html">TP08-DNS</a> validé</li>
+</ul>
+<h1>Étapes</h1>
+<h2>1. Création d'un réseau virtuel Proxmox</h2>
+<p>Créer un nouveau bridge réseau dédié au laboratoire.</p>
+<p>Exemple :</p>
+<pre><code>vmbr0
+↓
+Carte réseau physique
+→ Réseau domestique
+
+vmbr1
+↓
+Aucune interface physique
+→ Réseau privé du laboratoire
+</code></pre>
+<p>Le bridge <code>vmbr1</code> constitue un réseau privé entre les machines virtuelles. Il n'est pas relié directement au réseau domestique.</p>
+<p>Une fois créé :</p>
+<ul>
+<li>connecter <strong>SRV-DC01</strong> sur <code>vmbr1</code></li>
+<li>connecter <strong>WIN11-CLIENT01</strong> sur <code>vmbr1</code></li>
+<li>connecter les futures machines du laboratoire sur <code>vmbr1</code></li>
+</ul>
+<p><img alt="" src="../../99-Captures/TP09/01-vmbr1.png" />
+<em>Création du Bridge vmb1</em></p>
+<hr />
+<h2>2. Modification de l'adressage IP</h2>
+<p>Les machines du laboratoire changent de réseau.</p>
+<table>
+<thead>
+<tr>
+<th>Machine</th>
+<th>Ancienne IP</th>
+<th>Nouvelle IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRV-DC01</td>
+<td>192.168.1.210</td>
+<td>192.168.10.210</td>
+</tr>
+<tr>
+<td>WIN11-CLIENT01</td>
+<td>DHCP ou 192.168.1.211</td>
+<td>192.168.1.211 puis DHCP (plus tard)</td>
+</tr>
+</tbody>
+</table>
+<p>Configurer temporairement le serveur avec :</p>
+<ul>
+<li>Adresse IP : <code>192.168.10.210</code></li>
+<li>Masque : <code>255.255.255.0</code></li>
+<li>Passerelle : aucune</li>
+<li>DNS : <code>192.168.10.210</code></li>
+</ul>
+<p><img alt="" src="../../99-Captures/TP09/02-adresse-serveur.png" />
+<em>Vérification que le serveur répond sur sa nouvelle adresse</em></p>
+<hr />
+<h2>3. Installation du rôle DHCP</h2>
+<p>Depuis le <strong>Gestionnaire de serveur</strong> :</p>
+<ul>
+<li>Ajouter des rôles et fonctionnalités.</li>
+<li>Installer le rôle <strong>DHCP Server</strong>.</li>
+<li>Autoriser le serveur DHCP dans Active Directory.</li>
+</ul>
+<p><img alt="" src="../../99-Captures/TP09/03-installation-role.png" />
+<em>Installation du rôle DHCP</em></p>
+<hr />
+<h2>4. Création du scope</h2>
+<p>Ouvrir :</p>
+<pre><code>Gestionnaire de serveur
+→ Outils
+→ DHCP
+</code></pre>
+<p>Sous <strong>IPv4</strong>, créer une nouvelle étendue.</p>
+<p>Configurer :</p>
+<ul>
+<li>Nom : <code>LAB</code></li>
+<li>Début : <code>192.168.10.100</code></li>
+<li>Fin : <code>192.168.10.199</code></li>
+<li>Masque : <code>255.255.255.0</code></li>
+<li>Aucune exclusion</li>
+<li>Bail : 8 jours</li>
+</ul>
+<p>Choisir <strong>Configurer les options maintenant</strong>.</p>
+<p><img alt="" src="../../99-Captures/TP09/04-creation-scope.png" />
+<em>Création du scope</em></p>
+<hr />
+<h2>5. Configuration des options DHCP</h2>
+<p>Configurer :</p>
+<h3>Passerelle</h3>
+<p>Aucune.</p>
+<p>Le laboratoire est volontairement isolé du réseau domestique.</p>
+<h3>DNS</h3>
+<ul>
+<li>Domaine : <code>lab.local</code></li>
+<li>Serveur DNS : <code>192.168.10.210</code></li>
+</ul>
+<h3>WINS</h3>
+<p>Ne pas configurer.</p>
+<p>Enfin :</p>
+<ul>
+<li>Activer l'étendue.</li>
+</ul>
+<p><img alt="" src="../../99-Captures/TP09/05-options.png" />
+<em>Options</em></p>
+<hr />
+<h2>6. Test sur le client</h2>
+<p>Configurer la carte réseau de <strong>WIN11-CLIENT01</strong> en obtention automatique.</p>
+<p>Dans une invite de commandes :</p>
+<pre><code class="language-cmd">ipconfig /release
+ipconfig /renew
+ipconfig /all
+</code></pre>
+<p>Vérifier que le client obtient :</p>
+<ul>
+<li>une adresse comprise entre <code>192.168.10.100</code> et <code>192.168.10.199</code></li>
+<li>le serveur DNS <code>192.168.10.210</code> (penser à modifier la zone DNS inverse)</li>
+<li>le domaine <code>lab.local</code></li>
+</ul>
+<p><img alt="" src="../../99-Captures/TP09/06-test-client-1.png" />
+<img alt="" src="../../99-Captures/TP09/06-test-client-2.png" /></p>
+<p>Tester également :</p>
+<pre><code class="language-cmd">ping srv-dc01
+nslookup lab.local
+</code></pre>
+<p><img alt="" src="../../99-Captures/TP09/06-test-client-3.png" /></p>
+<hr />
+<h2>Validation</h2>
+<ul>
+<li>[v] Réseau virtuel <code>vmbr1</code> créé</li>
+<li>[v] Les VM utilisent le nouveau réseau privé</li>
+<li>[v] Le serveur DHCP est installé</li>
+<li>[v] Le scope est actif</li>
+<li>[v] Le client reçoit une adresse IP automatiquement</li>
+<li>[v] La résolution DNS fonctionne</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../../03 - DNS et DHCP/TP/TP08-DNS.html">TP08-DNS</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <span class="link-unpublished" title="Page non publiée">TP10-Routage-et-segmentation</span></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><a href="../../04 - Gestion Windows/Cours - GPO.html">Cours - GPO</a></td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../03 - DNS et DHCP/Cours - DHCP.html">Cours - DHCP</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>
