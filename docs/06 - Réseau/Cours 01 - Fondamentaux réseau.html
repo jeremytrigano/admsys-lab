@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours 01 - Fondamentaux réseau — AdmSys</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li><li class="nav-category">06 - Réseau</li><li><a href="../06 - Réseau/Cours 01 - Fondamentaux réseau.html" class="nav-link active">Cours 01 - Fondamentaux réseau</a></li><li><a href="../06 - Réseau/Cours 02 - Routage.html" class="nav-link">Cours 02 - Routage</a></li><li><a href="../06 - Réseau/Cours 03 - Commutation et VLAN.html" class="nav-link">Cours 03 - Commutation et VLAN</a></li><li><a href="../06 - Réseau/Cours 04 - Diagnostic réseau.html" class="nav-link">Cours 04 - Diagnostic réseau</a></li><li><a href="../06 - Réseau/TP/TP16 - Analyse du réseau.html" class="nav-link">TP16 - Analyse du réseau</a></li><li><a href="../06 - Réseau/TP/TP17 - Mise en place d'un routeur.html" class="nav-link">TP17 - Mise en place d'un routeur</a></li><li class="nav-category">07 - Virtualisation avancée</li><li><a href="../07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation.html" class="nav-link">Cours 01 - Architecture avancée de virtualisation</a></li><li><a href="../07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html" class="nav-link">Cours 02 - Stockage avancé et réseaux virtuels</a></li><li><a href="../07 - Virtualisation avancée/Cours 03 - Haute disponibilité, migration et sauvegarde.html" class="nav-link">Cours 03 - Haute disponibilité, migration et sauvegarde</a></li><li><a href="../07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html" class="nav-link">TP18 - Preparation des noeuds Proxmox nested</a></li><li><a href="../07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html" class="nav-link">TP19 - Stockage partage NFS Proxmox</a></li><li><a href="../07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html" class="nav-link">TP20 - Creation d'un cluster Proxmox</a></li><li><a href="../07 - Virtualisation avancée/TP/TP21 - Quorum device Proxmox.html" class="nav-link">TP21 - Quorum device Proxmox</a></li><li><a href="../07 - Virtualisation avancée/TP/TP22 - Migration et haute disponibilite Proxmox.html" class="nav-link">TP22 - Migration et haute disponibilite Proxmox</a></li><li><a href="../07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM.html" class="nav-link">TP23 - Sauvegarde et restauration de VM</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>Fondamentaux réseau</h1>
+<blockquote>
+<p>Voir aussi : <a href="../06 - Réseau/Cours 02 - Routage.html">Cours 02 - Routage</a> · <a href="../03 - DNS et DHCP/Cours - DNS.html">Cours - DNS</a> · <a href="../03 - DNS et DHCP/Cours - DHCP.html">Cours - DHCP</a> · <a href="../Architecture.html">Architecture</a></p>
+</blockquote>
+<h2>Définition</h2>
+<p>Un réseau informatique relie des équipements pour qu'ils puissent échanger des données selon des règles communes (protocoles, adressage, routage).</p>
+<h2>Modèle OSI (vision simplifiée)</h2>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Nom</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Application</td>
+<td>HTTP, DNS, SSH</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transport</td>
+<td>TCP, UDP</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Réseau</td>
+<td>IP, routage</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Liaison</td>
+<td>Ethernet, switch</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Physique</td>
+<td>Câble, fibre</td>
+</tr>
+</tbody>
+</table>
+<h2>TCP/IP</h2>
+<p>Suite de protocoles utilisée sur Internet et dans la majorité des réseaux d'entreprise. Elle regroupe notamment IP, TCP, UDP, ICMP, DNS et DHCP.</p>
+<h2>IPv4</h2>
+<p>Format : <code>192.168.1.10/24</code></p>
+<ul>
+<li><strong>Adresse réseau</strong> : identifie le segment</li>
+<li><strong>Adresse hôte</strong> : identifie une machine</li>
+<li><strong>Broadcast</strong> : communication vers tout le segment</li>
+</ul>
+<h2>Masque de sous-réseau</h2>
+<p>Le masque délimite la partie réseau et la partie hôte.</p>
+<table>
+<thead>
+<tr>
+<th>Notation</th>
+<th>Masque</th>
+<th>Hôtes utilisables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/24</td>
+<td>255.255.255.0</td>
+<td>254</td>
+</tr>
+<tr>
+<td>/16</td>
+<td>255.255.0.0</td>
+<td>65 534</td>
+</tr>
+</tbody>
+</table>
+<h2>Passerelle par défaut</h2>
+<p>Routeur ou équipement qui relie un réseau local à un autre réseau (souvent Internet).</p>
+<p>Exemple : <code>192.168.1.1</code> ou <code>192.168.10.254</code></p>
+<h2>DNS</h2>
+<p>Traduit un nom en adresse IP.</p>
+<pre><code class="language-text">srv-dc01.lab.local  →  192.168.1.210
+</code></pre>
+<p>→ <a href="../03 - DNS et DHCP/Cours - DNS.html">Cours - DNS</a></p>
+<h2>DHCP</h2>
+<p>Attribue automatiquement une configuration IP aux postes.</p>
+<p>→ <a href="../03 - DNS et DHCP/Cours - DHCP.html">Cours - DHCP</a></p>
+<h2>Adresses privées / publiques</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Plages courantes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Privées</td>
+<td>10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16</td>
+</tr>
+<tr>
+<td>Publiques</td>
+<td>Toutes les autres (routables sur Internet)</td>
+</tr>
+</tbody>
+</table>
+<h2>NAT</h2>
+<p>Le NAT (Network Address Translation) permet à plusieurs machines d'un réseau privé de sortir vers Internet via une seule adresse publique.</p>
+<h2>CIDR</h2>
+<p>Notation compacte pour exprimer une adresse et son masque : <code>192.168.10.0/24</code>.</p>
+<h2>Ports TCP et UDP</h2>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Protocole</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80</td>
+<td>TCP</td>
+<td>HTTP</td>
+</tr>
+<tr>
+<td>443</td>
+<td>TCP</td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td>22</td>
+<td>TCP</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>3389</td>
+<td>TCP</td>
+<td>RDP</td>
+</tr>
+<tr>
+<td>53</td>
+<td>TCP/UDP</td>
+<td>DNS</td>
+</tr>
+<tr>
+<td>67/68</td>
+<td>UDP</td>
+<td>DHCP</td>
+</tr>
+<tr>
+<td>389/636</td>
+<td>TCP</td>
+<td>LDAP/LDAPS</td>
+</tr>
+<tr>
+<td>445</td>
+<td>TCP</td>
+<td>SMB</td>
+</tr>
+<tr>
+<td>ICMP</td>
+<td>-</td>
+<td>ping, diagnostic</td>
+</tr>
+</tbody>
+</table>
+<h2>Protocoles courants</h2>
+<table>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP/HTTPS</td>
+<td>Accès Web</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>Administration distante Linux</td>
+</tr>
+<tr>
+<td>RDP</td>
+<td>Bureau à distance Windows</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>Résolution de noms</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>Attribution d'adresses</td>
+</tr>
+<tr>
+<td>LDAP</td>
+<td>Annuaire (Active Directory)</td>
+</tr>
+<tr>
+<td>SMB</td>
+<td>Partage de fichiers Windows</td>
+</tr>
+<tr>
+<td>ICMP</td>
+<td>Test de connectivité (ping)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../03 - DNS et DHCP/TP/TP09-DHCP.html">TP09-DHCP</a> · <a href="../05 - Linux/TP/TP14 - Administration Linux.html">TP14 - Administration Linux</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../06 - Réseau/Cours 02 - Routage.html">Cours 02 - Routage</a></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><a href="../01 - Virtualisation/Cours - Virtualisation.html">Cours - Virtualisation</a> · <a href="../Architecture.html">Architecture</a></td>
+</tr>
+<tr>
+<td>TP associé</td>
+<td><a href="../06 - Réseau/TP/TP16 - Analyse du réseau.html">TP16 - Analyse du réseau</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

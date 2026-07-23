@@ -11,51 +11,74 @@
     <nav class="sidebar">
       <div class="site-title"><a href="./index.html">AdmSys</a></div>
       <ul class="nav-list">
-        <li><a href="Architecture.html" class="nav-link active">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li>
+        <li><a href="Architecture.html" class="nav-link active">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li><li class="nav-category">06 - Réseau</li><li><a href="06 - Réseau/Cours 01 - Fondamentaux réseau.html" class="nav-link">Cours 01 - Fondamentaux réseau</a></li><li><a href="06 - Réseau/Cours 02 - Routage.html" class="nav-link">Cours 02 - Routage</a></li><li><a href="06 - Réseau/Cours 03 - Commutation et VLAN.html" class="nav-link">Cours 03 - Commutation et VLAN</a></li><li><a href="06 - Réseau/Cours 04 - Diagnostic réseau.html" class="nav-link">Cours 04 - Diagnostic réseau</a></li><li><a href="06 - Réseau/TP/TP16 - Analyse du réseau.html" class="nav-link">TP16 - Analyse du réseau</a></li><li><a href="06 - Réseau/TP/TP17 - Mise en place d'un routeur.html" class="nav-link">TP17 - Mise en place d'un routeur</a></li><li class="nav-category">07 - Virtualisation avancée</li><li><a href="07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation.html" class="nav-link">Cours 01 - Architecture avancée de virtualisation</a></li><li><a href="07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html" class="nav-link">Cours 02 - Stockage avancé et réseaux virtuels</a></li><li><a href="07 - Virtualisation avancée/Cours 03 - Haute disponibilité, migration et sauvegarde.html" class="nav-link">Cours 03 - Haute disponibilité, migration et sauvegarde</a></li><li><a href="07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html" class="nav-link">TP18 - Preparation des noeuds Proxmox nested</a></li><li><a href="07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html" class="nav-link">TP19 - Stockage partage NFS Proxmox</a></li><li><a href="07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html" class="nav-link">TP20 - Creation d'un cluster Proxmox</a></li><li><a href="07 - Virtualisation avancée/TP/TP21 - Quorum device Proxmox.html" class="nav-link">TP21 - Quorum device Proxmox</a></li><li><a href="07 - Virtualisation avancée/TP/TP22 - Migration et haute disponibilite Proxmox.html" class="nav-link">TP22 - Migration et haute disponibilite Proxmox</a></li><li><a href="07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM.html" class="nav-link">TP23 - Sauvegarde et restauration de VM</a></li>
       </ul>
     </nav>
     <main class="content">
       <article><h1>Architecture</h1>
 <blockquote>
-<p>Laboratoire SER8 — <span class="link-unpublished" title="Page non publiée">README</span> · <span class="link-unpublished" title="Page non publiée">Inventaire</span> · <span class="link-unpublished" title="Page non publiée">Procedures</span> · <span class="link-unpublished" title="Page non publiée">Projet final - ACME Industries</span></p>
+<p>Laboratoire SER8 - <span class="link-unpublished" title="Page non publiée">README</span> · <span class="link-unpublished" title="Page non publiée">Inventaire</span> · <span class="link-unpublished" title="Page non publiée">Procedures</span> · <span class="link-unpublished" title="Page non publiée">Projet final - ACME Industries</span></p>
 </blockquote>
 <h2>Schéma réseau</h2>
-<pre><code class="language-text">                    Internet
-                        │
-                   [Routeur]
-                        │
-              192.168.1.0/24
-                        │
-        ┌───────────────┼───────────────┐
-        │               │               │
-     PVE-SR8        SRV-DC01      WIN11-CLIENT01
-  192.168.1.200   192.168.1.210   192.168.1.211
-   (Proxmox)      (DC/DNS/DHCP)   (Poste client)
+<pre><code class="language-text">Internet
+    │
+Freebox
+192.168.1.1 / .254
+    │
+vmbr0 — 192.168.1.0/24 (domestique)
+    │
+    ├── PVE-SR8 ………… 192.168.1.200
+    └── SRV-RT01 ……… ens18 DHCP (WAN)
+            │
+            │ ens19 = 192.168.10.254
+            │
+        vmbr1 — 192.168.10.0/24 (lab isolé)
+            │
+            ├── SRV-DC01 ……… 192.168.10.210  (AD, DNS, DHCP)
+            ├── WIN11-CLIENT01  DHCP / 192.168.10.x
+            └── DEBIAN01 ……… prévu (après TP15)
 </code></pre>
+<p>Routeur lab : <a href="06 - Réseau/TP/TP17 - Mise en place d'un routeur.html">TP17</a> · Passerelle lab : <code>192.168.10.254</code></p>
 <h2>Machines</h2>
-<h3>PVE-SR8 — Hyperviseur Proxmox</h3>
+<h3>PVE-SR8 - Hyperviseur Proxmox</h3>
 <ul>
 <li>Hôte : <code>pve-sr8.lab.local</code></li>
-<li>IP : <code>192.168.1.200/24</code></li>
-<li>Passerelle : <code>192.168.1.254</code></li>
+<li>IP : <code>192.168.1.200/24</code> (vmbr0)</li>
+<li>Passerelle : Freebox (<code>192.168.1.1</code> / <code>192.168.1.254</code>)</li>
 </ul>
-<h3>SRV-DC01 — Contrôleur de domaine</h3>
+<h3>SRV-RT01 - Routeur Linux</h3>
 <ul>
-<li>IP : <code>192.168.1.210</code></li>
+<li>Hôte : <code>srv-rt01.lab.local</code></li>
+<li>OS : Ubuntu Server</li>
+<li>Rôle : Routage + NAT entre réseau domestique et lab</li>
+<li>Interfaces :</li>
+<li><code>ens18</code> → vmbr0 (WAN) · DHCP sur <code>192.168.1.0/24</code></li>
+<li><code>ens19</code> → vmbr1 (LAN) · <code>192.168.10.254/24</code></li>
+<li>Services : <code>ip_forward</code>, iptables MASQUERADE + FORWARD</li>
+<li>TP : <a href="06 - Réseau/TP/TP17 - Mise en place d'un routeur.html">TP17</a></li>
+</ul>
+<h3>SRV-DC01 - Contrôleur de domaine</h3>
+<ul>
+<li>IP : <code>192.168.10.210</code> (vmbr1)</li>
 <li>OS : Windows Server 2022 · VM ID : 100</li>
 <li>Services : AD, DNS, DHCP</li>
-<li>Annuaire : OU Direction, Production, Comptabilité — <a href="02 - Active Directory/TP/TP05-Creation-OU.html">TP05</a></li>
+<li>Passerelle DHCP (option 003) : <code>192.168.10.254</code></li>
+<li>Annuaire : OU Direction, Production, Comptabilité - <a href="02 - Active Directory/TP/TP05-Creation-OU.html">TP05</a></li>
 </ul>
-<h3>WIN11-CLIENT01 — Poste client</h3>
+<h3>WIN11-CLIENT01 - Poste client</h3>
 <ul>
-<li>IP : <code>192.168.1.211</code></li>
+<li>Réseau : <code>192.168.10.0/24</code> (vmbr1) · DHCP</li>
 <li>OS : Windows 11 Pro · VM ID : 101</li>
 <li>Domaine : <code>lab.local</code></li>
+<li>Passerelle : <code>192.168.10.254</code></li>
 </ul>
-<h3>DEBIAN01 — Serveur Linux <em>(prévu)</em></h3>
+<h3>DEBIAN01 - Serveur Linux <em>(prévu)</em></h3>
 <ul>
+<li>Réseau : <code>192.168.10.0/24</code> (vmbr1)</li>
 <li>Rôle : services Linux (module 05)</li>
-<li>OS : Debian</li>
+<li>OS : Debian / Ubuntu</li>
+<li>Passerelle : <code>192.168.10.254</code></li>
+<li>TP : <span class="link-unpublished" title="Page non publiée">TP15</span> (après TP17)</li>
 </ul>
 <h2>Domaine</h2>
 <ul>
@@ -90,18 +113,32 @@
 <td><a href="03 - DNS et DHCP/TP/TP08-DNS.html">TP08</a> · <a href="03 - DNS et DHCP/TP/TP09-DHCP.html">TP09</a></td>
 </tr>
 <tr>
+<td>Linux</td>
+<td><a href="05 - Linux/TP/TP13 - Installation et découverte Linux.html">TP13</a> · <a href="05 - Linux/TP/TP14 - Administration Linux.html">TP14</a> · <span class="link-unpublished" title="Page non publiée">TP15</span></td>
+</tr>
+<tr>
 <td>Réseau</td>
-<td><span class="link-unpublished" title="Page non publiée">TP10</span></td>
+<td><a href="06 - Réseau/TP/TP16 - Analyse du réseau.html">TP16</a> · <a href="06 - Réseau/TP/TP17 - Mise en place d'un routeur.html">TP17</a></td>
+</tr>
+<tr>
+<td>Virtualisation avancée</td>
+<td><a href="07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html">TP18</a> · <a href="07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html">TP19</a> · <a href="07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html">TP20</a> · <a href="07 - Virtualisation avancée/TP/TP21 - Quorum device Proxmox.html">TP21</a> · <a href="07 - Virtualisation avancée/TP/TP22 - Migration et haute disponibilite Proxmox.html">TP22</a> · <a href="07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM.html">TP23</a></td>
+</tr>
+<tr>
+<td>Téléphonie IP</td>
+<td><span class="link-unpublished" title="Page non publiée">TP43</span> · <span class="link-unpublished" title="Page non publiée">TP44</span> · <span class="link-unpublished" title="Page non publiée">TP45</span></td>
 </tr>
 </tbody>
 </table>
 <h2>Évolution prévue</h2>
 <ul>
-<li>[ ] DEBIAN01 (module 05)</li>
-<li>[ ] Segmentation réseau (TP10)</li>
+<li>[v] Routeur lab et accès Internet (<a href="06 - Réseau/TP/TP17 - Mise en place d'un routeur.html">TP17</a> - SRV-RT01)</li>
+<li>[ ] DEBIAN01 (module 05 - <span class="link-unpublished" title="Page non publiée">TP15</span>, après TP17)</li>
+<li>[ ] Cluster Proxmox / NFS / qdevice / HA / backups (<a href="07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html">TP18</a>–<a href="07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM.html">TP23</a>)</li>
 <li>[ ] GPO et serveur de fichiers (module 04)</li>
 <li>[ ] Sauvegardes (module 09)</li>
 <li>[ ] Microsoft 365 / Entra ID (module 08)</li>
+<li>[ ] Téléphonie IP - IPBX et extensions (module 12)</li>
 </ul></article>
     </main>
   </div>

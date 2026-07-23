@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP19 - Stockage partage NFS Proxmox — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="../../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="../../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../../05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="../../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li><li class="nav-category">06 - Réseau</li><li><a href="../../06 - Réseau/Cours 01 - Fondamentaux réseau.html" class="nav-link">Cours 01 - Fondamentaux réseau</a></li><li><a href="../../06 - Réseau/Cours 02 - Routage.html" class="nav-link">Cours 02 - Routage</a></li><li><a href="../../06 - Réseau/Cours 03 - Commutation et VLAN.html" class="nav-link">Cours 03 - Commutation et VLAN</a></li><li><a href="../../06 - Réseau/Cours 04 - Diagnostic réseau.html" class="nav-link">Cours 04 - Diagnostic réseau</a></li><li><a href="../../06 - Réseau/TP/TP16 - Analyse du réseau.html" class="nav-link">TP16 - Analyse du réseau</a></li><li><a href="../../06 - Réseau/TP/TP17 - Mise en place d'un routeur.html" class="nav-link">TP17 - Mise en place d'un routeur</a></li><li class="nav-category">07 - Virtualisation avancée</li><li><a href="../../07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation.html" class="nav-link">Cours 01 - Architecture avancée de virtualisation</a></li><li><a href="../../07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html" class="nav-link">Cours 02 - Stockage avancé et réseaux virtuels</a></li><li><a href="../../07 - Virtualisation avancée/Cours 03 - Haute disponibilité, migration et sauvegarde.html" class="nav-link">Cours 03 - Haute disponibilité, migration et sauvegarde</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html" class="nav-link">TP18 - Preparation des noeuds Proxmox nested</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html" class="nav-link active">TP19 - Stockage partage NFS Proxmox</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html" class="nav-link">TP20 - Creation d'un cluster Proxmox</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP21 - Quorum device Proxmox.html" class="nav-link">TP21 - Quorum device Proxmox</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP22 - Migration et haute disponibilite Proxmox.html" class="nav-link">TP22 - Migration et haute disponibilite Proxmox</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM.html" class="nav-link">TP23 - Sauvegarde et restauration de VM</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP19 - Stockage partagé NFS Proxmox</h1>
+<blockquote>
+<p>Théorie : <a href="../../07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html">Cours 02 - Stockage avancé et réseaux virtuels</a><br />
+Captures : <code>99-Captures/TP19/</code> · Prérequis : <a href="../../07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html">TP18 - Preparation des noeuds Proxmox nested</a></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Mettre en place un stockage NFS partagé accessible par les deux nœuds Proxmox, prérequis indispensable à la HA.</p>
+<h2>Pourquoi ce TP</h2>
+<p>Une VM sur <code>local-lvm</code> n'existe physiquement que sur un nœud. Si ce nœud tombe, l'autre ne retrouve pas le disque : <strong>la HA est impossible</strong>.</p>
+<pre><code class="language-text">PVE-Node01                          PVE-Node02
+ |
+ +-- local-lvm
+       |
+       +-- vm-100-disk-0   →   disque introuvable sur Node02
+</code></pre>
+<p>Architecture cible :</p>
+<pre><code class="language-text">        PVE-Node01 -------- PVE-Node02
+              \                 /
+               \               /
+                SRV-NAS01 (NFS)
+                 /srv/proxmox
+</code></pre>
+<h2>Architecture</h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM</td>
+<td><code>SRV-NAS01</code></td>
+</tr>
+<tr>
+<td>IP</td>
+<td><code>192.168.10.220/24</code></td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Debian / Ubuntu Server</td>
+</tr>
+<tr>
+<td>Export NFS</td>
+<td><code>/srv/proxmox</code></td>
+</tr>
+<tr>
+<td>Clients</td>
+<td><code>192.168.10.0/24</code></td>
+</tr>
+<tr>
+<td>Stockage Proxmox</td>
+<td><code>NFS-Proxmox</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Prérequis</h2>
+<ul>
+<li>[ ] <a href="../../07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html">TP18 - Preparation des noeuds Proxmox nested</a> validé</li>
+<li>[ ] PVE-Node01 et PVE-Node02 joignables sur <code>vmbr1</code></li>
+</ul>
+<h2>Étapes</h2>
+<h3>1. Créer SRV-NAS01</h3>
+<p>Créer une VM légère sur PVE-SR8 (ou un nœud) :</p>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom</td>
+<td>SRV-NAS01</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>192.168.10.220/24</td>
+</tr>
+<tr>
+<td>Passerelle</td>
+<td>192.168.10.254</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>192.168.10.210</td>
+</tr>
+<tr>
+<td>Disque</td>
+<td>100 Go (ou plus selon lab)</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>2 Go</td>
+</tr>
+<tr>
+<td>Bridge</td>
+<td>vmbr1</td>
+</tr>
+</tbody>
+</table>
+<h3>2. Installer NFS</h3>
+<pre><code class="language-bash">sudo apt update
+sudo apt install nfs-kernel-server
+</code></pre>
+<h3>3. Créer et exporter le partage</h3>
+<pre><code class="language-bash">sudo mkdir -p /srv/proxmox
+sudo chown nobody:nogroup /srv/proxmox
+sudo chmod 777 /srv/proxmox
+</code></pre>
+<p>Éditer <code>/etc/exports</code> :</p>
+<pre><code class="language-text">/srv/proxmox 192.168.10.0/24(rw,sync,no_subtree_check,no_root_squash)
+</code></pre>
+<p>Appliquer :</p>
+<pre><code class="language-bash">sudo exportfs -ra
+sudo systemctl enable --now nfs-kernel-server
+sudo exportfs -v
+</code></pre>
+<h3>4. Tester depuis un nœud Proxmox</h3>
+<pre><code class="language-bash">ping -c 2 192.168.10.220
+showmount -e 192.168.10.220
+</code></pre>
+<p>Test de montage manuel (obligatoire) :</p>
+<pre><code class="language-bash">mkdir -p /mnt/test-nfs
+mount -t nfs -o vers=3 192.168.10.220:/srv/proxmox /mnt/test-nfs
+touch /mnt/test-nfs/ok.txt
+umount /mnt/test-nfs
+</code></pre>
+<p>Scan Proxmox (peut être vide même si <code>showmount</code> OK) :</p>
+<pre><code class="language-bash">pvesm nfsscan 192.168.10.220
+</code></pre>
+<h3>5. Ajouter le stockage dans Proxmox</h3>
+<h4>Méthode recommandée (CLI)</h4>
+<p>Si le menu <strong>Export</strong> de l'interface reste vide après le scan, ajouter le stockage en ligne de commande depuis un nœud :</p>
+<pre><code class="language-bash">pvesm add nfs NFS-Proxmox \
+  --server 192.168.10.220 \
+  --export /srv/proxmox \
+  --content images,iso,backup,vztmpl,snippets \
+  --options vers=3
+</code></pre>
+<p>Vérifier :</p>
+<pre><code class="language-bash">pvesm status
+cat /etc/pve/storage.cfg
+</code></pre>
+<h4>Méthode interface Web</h4>
+<pre><code class="language-text">Datacenter → Storage → Add → NFS
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>NFS-Proxmox</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>192.168.10.220</td>
+</tr>
+<tr>
+<td>Export</td>
+<td><code>/srv/proxmox</code> (saisir manuellement si la liste est vide)</td>
+</tr>
+<tr>
+<td>Version</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Disk image, ISO, Container, Backup, Snippets</td>
+</tr>
+<tr>
+<td>Nodes</td>
+<td>PVE-Node01, PVE-Node02</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Piège fréquent :</strong> <code>showmount</code> et <code>mount</code> OK, mais le déroulant Export reste vide.<br />
+Cause : le scan UI (<code>pvesm nfsscan</code>) échoue ou ne remonte rien. Contournement : <strong>CLI <code>pvesm add nfs</code></strong> ou saisie manuelle du chemin d'export + <strong>vers=3</strong>.</p>
+</blockquote>
+<p>Résultat attendu :</p>
+<pre><code class="language-text">PVE-Node01 → NFS-Proxmox (active)
+PVE-Node02 → NFS-Proxmox (active)
+</code></pre>
+<h2>Validation</h2>
+<ul>
+<li>[v] SRV-NAS01 joignable</li>
+<li>[v] Export NFS visible (<code>showmount -e</code>)</li>
+<li>[v] Stockage <code>NFS-Proxmox</code> présent sur les deux nœuds</li>
+<li>[v] Création d'un fichier test possible depuis les deux nœuds (même contenu)</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../../07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html">TP18 - Preparation des noeuds Proxmox nested</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../../07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html">TP20 - Creation d'un cluster Proxmox</a></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><a href="../../Architecture.html">Architecture</a> · <span class="link-unpublished" title="Page non publiée">Inventaire</span></td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html">Cours 02 - Stockage avancé et réseaux virtuels</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

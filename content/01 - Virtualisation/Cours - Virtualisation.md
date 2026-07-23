@@ -60,7 +60,7 @@ Les entreprises utilisent principalement :
 |-------|------|
 | Prérequis | - |
 | Suite recommandée | → [[Cours - Hyperviseurs]] |
-| Branches | [[../../06 - Réseau/Cours - Réseaux]] |
+| Branches | [[../../06 - Réseau/Cours 01 - Fondamentaux réseau]] |
 | TP associé | [[TP/TP01-Installation-Proxmox]] |
 
 > Suivi : [[00 - Administration du parcours/Progression]]

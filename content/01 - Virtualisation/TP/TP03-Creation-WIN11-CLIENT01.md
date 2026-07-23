@@ -112,7 +112,7 @@ _Bureau Windows 11 avec nom du PC, adresse IP et connectivité réseau_
 |-------|------|
 | Prérequis | [[TP02-Creation-SRV-DC01]] |
 | Suite recommandée | → [[../../02 - Active Directory/TP/TP04-Promotion-DC]] |
-| Branches | [[../../06 - Réseau/Cours - Réseaux]] |
+| Branches | [[../../06 - Réseau/Cours 01 - Fondamentaux réseau]] |
 | Théorie | [[../../02 - Active Directory/Cours - Active Directory]] |
 
 > Suivi : [[../../00 - Administration du parcours/Progression]]

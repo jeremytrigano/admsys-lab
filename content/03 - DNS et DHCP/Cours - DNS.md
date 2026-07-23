@@ -54,7 +54,7 @@ ipconfig /flushdns
 
 | Étape | Lien |
 |-------|------|
-| Prérequis | [[../../02 - Active Directory/Cours - Active Directory]] · [[../../06 - Réseau/Cours - Réseaux]] |
+| Prérequis | [[../../02 - Active Directory/Cours - Active Directory]] · [[../../06 - Réseau/Cours 01 - Fondamentaux réseau]] |
 | Suite recommandée | → [[Cours - DHCP]] |
 | TP associé | [[TP/TP08-DNS]] |
 

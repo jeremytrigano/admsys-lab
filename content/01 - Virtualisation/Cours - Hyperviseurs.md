@@ -1,4 +1,4 @@
-﻿# Hyperviseurs
+# Hyperviseurs
 
 > Voir aussi : [[Cours - Virtualisation]] · [[TP/TP01-Installation-Proxmox]]
 
@@ -54,7 +54,7 @@ Installé comme application sur un OS hôte.
 |-------|------|
 | Prérequis | [[Cours - Virtualisation]] |
 | Suite recommandée | → [[TP/TP01-Installation-Proxmox]] |
-| Branches | [[Architecture]] · [[../../06 - Réseau/Cours - Réseaux]] |
+| Branches | [[Architecture]] · [[../../06 - Réseau/Cours 01 - Fondamentaux réseau]] |
 | TP associé | [[TP/TP01-Installation-Proxmox]] |
 
 > Suivi : [[00 - Administration du parcours/Progression]]

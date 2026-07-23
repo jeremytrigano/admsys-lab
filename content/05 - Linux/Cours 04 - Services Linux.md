@@ -128,7 +128,7 @@ Configuration permanente :
 | Étape | Lien |
 |-------|------|
 | Prérequis | [[Cours 03 - Réseau Linux]] |
-| Suite recommandée | → [[../06 - Réseau/Cours - Réseaux]] |
+| Suite recommandée | → [[../06 - Réseau/Cours 01 - Fondamentaux réseau]] |
 | Branches | [[../11 - Conteneurisation]] |
 | TP associé | [[TPxx - Services et réseau Linux]] |
 

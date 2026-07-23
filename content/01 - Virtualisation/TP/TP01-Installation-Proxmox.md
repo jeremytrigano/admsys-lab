@@ -119,7 +119,7 @@ Proxmox
 |-------|------|
 | Prérequis | [[../Cours - Virtualisation]] · [[../Cours - Hyperviseurs]] |
 | Suite recommandée | → [[TP02-Creation-SRV-DC01]] |
-| Branches | [[../../06 - Réseau/Cours - Réseaux]] |
+| Branches | [[../../06 - Réseau/Cours 01 - Fondamentaux réseau]] |
 | Théorie | [[../Cours - Virtualisation]] · [[../Cours - Hyperviseurs]] |
 
 > Suivi : [[../../00 - Administration du parcours/Progression]]

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TP18 - Preparation des noeuds Proxmox nested — AdmSys</title>
+  <link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="../../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="../../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../../05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="../../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li><li class="nav-category">06 - Réseau</li><li><a href="../../06 - Réseau/Cours 01 - Fondamentaux réseau.html" class="nav-link">Cours 01 - Fondamentaux réseau</a></li><li><a href="../../06 - Réseau/Cours 02 - Routage.html" class="nav-link">Cours 02 - Routage</a></li><li><a href="../../06 - Réseau/Cours 03 - Commutation et VLAN.html" class="nav-link">Cours 03 - Commutation et VLAN</a></li><li><a href="../../06 - Réseau/Cours 04 - Diagnostic réseau.html" class="nav-link">Cours 04 - Diagnostic réseau</a></li><li><a href="../../06 - Réseau/TP/TP16 - Analyse du réseau.html" class="nav-link">TP16 - Analyse du réseau</a></li><li><a href="../../06 - Réseau/TP/TP17 - Mise en place d'un routeur.html" class="nav-link">TP17 - Mise en place d'un routeur</a></li><li class="nav-category">07 - Virtualisation avancée</li><li><a href="../../07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation.html" class="nav-link">Cours 01 - Architecture avancée de virtualisation</a></li><li><a href="../../07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html" class="nav-link">Cours 02 - Stockage avancé et réseaux virtuels</a></li><li><a href="../../07 - Virtualisation avancée/Cours 03 - Haute disponibilité, migration et sauvegarde.html" class="nav-link">Cours 03 - Haute disponibilité, migration et sauvegarde</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html" class="nav-link active">TP18 - Preparation des noeuds Proxmox nested</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html" class="nav-link">TP19 - Stockage partage NFS Proxmox</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html" class="nav-link">TP20 - Creation d'un cluster Proxmox</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP21 - Quorum device Proxmox.html" class="nav-link">TP21 - Quorum device Proxmox</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP22 - Migration et haute disponibilite Proxmox.html" class="nav-link">TP22 - Migration et haute disponibilite Proxmox</a></li><li><a href="../../07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM.html" class="nav-link">TP23 - Sauvegarde et restauration de VM</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>TP18 - Préparation des nœuds Proxmox (Nested)</h1>
+<blockquote>
+<p>Théorie : <a href="../../07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation.html">Cours 01 - Architecture avancée de virtualisation</a> · <a href="../../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a><br />
+Captures : <code>99-Captures/TP18/</code> · Prérequis : <a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html">TP01-Installation-Proxmox</a> · <a href="../../06 - Réseau/TP/TP17 - Mise en place d'un routeur.html">TP17 - Mise en place d'un routeur</a></p>
+</blockquote>
+<h2>Objectif</h2>
+<p>Préparer deux nœuds Proxmox indépendants, prêts à former un cluster au TP suivant.</p>
+<h2>Contexte</h2>
+<blockquote>
+<p>Cette partie est à réaliser uniquement si vous ne disposez que d'un seul serveur physique Proxmox. Les deux futurs nœuds du cluster seront installés dans des machines virtuelles (<strong>Nested Virtualization</strong>).</p>
+</blockquote>
+<h2>Prérequis</h2>
+<ul>
+<li>[v] L'hyperviseur <strong>PVE-SR8</strong> est déjà installé (<a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html">TP01-Installation-Proxmox</a>)</li>
+<li>[v] <a href="../../06 - Réseau/TP/TP17 - Mise en place d'un routeur.html">TP17 - Mise en place d'un routeur</a> validé</li>
+<li>[v] L'ISO de <strong>Proxmox VE</strong> est disponible dans le stockage <code>local</code></li>
+<li>[v] La virtualisation imbriquée (Nested Virtualization) est activée sur le serveur physique</li>
+<li>[v] Le réseau <code>vmbr1</code> permet aux deux futurs nœuds de communiquer</li>
+</ul>
+<p>Pour vérifier si la virtualisation imbriquée est activée <code>cat /sys/module/kvm_amd/parameters/nested</code> doit retourner 1 (si Intel : <code>cat /sys/module/kvm_intel/parameters/nested</code>)</p>
+<h2>Étapes</h2>
+<h3>1. Créer la machine virtuelle <code>PVE-Node01</code></h3>
+<p>Créer une nouvelle VM.</p>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom</td>
+<td><code>PVE-Node01</code></td>
+</tr>
+<tr>
+<td>VM ID</td>
+<td>automatique</td>
+</tr>
+<tr>
+<td>OS</td>
+<td><strong>Do not use any media</strong></td>
+</tr>
+<tr>
+<td>BIOS</td>
+<td>OVMF (UEFI)</td>
+</tr>
+<tr>
+<td>Machine</td>
+<td>q35</td>
+</tr>
+<tr>
+<td>EFI Disk</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>TPM</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>SCSI Controller</td>
+<td>VirtIO SCSI Single</td>
+</tr>
+<tr>
+<td>Disque</td>
+<td>128 Go</td>
+</tr>
+<tr>
+<td>Stockage</td>
+<td>local-lvm</td>
+</tr>
+<tr>
+<td>Cache</td>
+<td>Default</td>
+</tr>
+<tr>
+<td>SSD Emulation</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Nombre de sockets</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nombre de cœurs</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>host</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>8192 Mo</td>
+</tr>
+<tr>
+<td>Ballooning</td>
+<td>Désactivé</td>
+</tr>
+<tr>
+<td>Carte réseau</td>
+<td>VirtIO</td>
+</tr>
+<tr>
+<td>Bridge</td>
+<td>vmbr1</td>
+</tr>
+<tr>
+<td>VLAN</td>
+<td>Aucun</td>
+</tr>
+</tbody>
+</table>
+<p>Créer ensuite la VM.</p>
+<h3>2. Monter l'ISO Proxmox</h3>
+<p>Dans la VM :</p>
+<pre><code class="language-text">Hardware
+    CD/DVD Drive
+        ISO Image
+            proxmox-ve-*.iso
+</code></pre>
+<p>Cocher :</p>
+<pre><code class="language-text">Start at boot
+</code></pre>
+<h3>3. Installer Proxmox VE</h3>
+<p>Démarrer la VM puis suivre l'installation.</p>
+<p>Configurer :</p>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hostname</td>
+<td><code>pve-node01.lab.local</code></td>
+</tr>
+<tr>
+<td>Adresse IP</td>
+<td><code>192.168.10.201/24</code></td>
+</tr>
+<tr>
+<td>Passerelle</td>
+<td><code>192.168.10.254</code></td>
+</tr>
+<tr>
+<td>DNS</td>
+<td><code>192.168.10.210</code></td>
+</tr>
+<tr>
+<td>Domaine</td>
+<td><code>lab.local</code></td>
+</tr>
+</tbody>
+</table>
+<p>Une fois l'installation terminée :</p>
+<ul>
+<li>retirer l'ISO</li>
+<li>redémarrer la VM</li>
+</ul>
+<p>Vérifier que l'interface Web est accessible :</p>
+<pre><code class="language-text">https://192.168.10.201:8006
+</code></pre>
+<h3>4. Créer <code>PVE-Node02</code></h3>
+<p>Reproduire exactement les mêmes étapes.</p>
+<p>Modifier uniquement :</p>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nom</td>
+<td><code>PVE-Node02</code></td>
+</tr>
+<tr>
+<td>Hostname</td>
+<td><code>pve-node02.lab.local</code></td>
+</tr>
+<tr>
+<td>Adresse IP</td>
+<td><code>192.168.10.202/24</code></td>
+</tr>
+</tbody>
+</table>
+<p>Le reste de la configuration est identique.</p>
+<h3>5. Vérifications</h3>
+<p>Depuis chaque nœud :</p>
+<pre><code class="language-bash">ping 192.168.10.201
+ping 192.168.10.202
+</code></pre>
+<p>Les deux interfaces Web doivent être accessibles :</p>
+<pre><code class="language-text">https://192.168.10.201:8006
+https://192.168.10.202:8006
+</code></pre>
+<p>Lorsque les deux nœuds communiquent correctement, poursuivre avec le stockage partagé (<a href="../../07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html">TP19 - Stockage partage NFS Proxmox</a>), puis le cluster.</p>
+<blockquote>
+<p><strong>Important pour la HA :</strong> <code>local-lvm</code> convient pour les disques des <strong>hyperviseurs nested</strong> eux-mêmes. Les VM qui seront protégées par la HA devront être stockées sur un <strong>stockage partagé</strong> (NFS, TP19). Avec seulement 2 nœuds, un <strong>quorum device</strong> (TP21) sera nécessaire pour éviter le split-brain.</p>
+</blockquote>
+<h2>Remarque pédagogique</h2>
+<p>Pourquoi choisir <strong>"Do not use any media"</strong> lors de la création de la VM ?</p>
+<p>L'assistant de création de Proxmox propose un type de système d'exploitation (Linux, Windows, etc.), mais ici nous allons installer <strong>un hyperviseur</strong> et non un système déjà présent.</p>
+<p>Il est donc préférable de :</p>
+<ul>
+<li>créer une VM "vide" (<code>Do not use any media</code>)</li>
+<li>monter ensuite manuellement l'ISO de Proxmox VE</li>
+<li>démarrer sur cette ISO comme sur un serveur physique</li>
+</ul>
+<p>Cette méthode reproduit exactement une installation réelle et évite certaines optimisations spécifiques à Linux ou Windows qui n'apportent rien ici.</p>
+<h2>Validation</h2>
+<ul>
+<li>[v] <code>PVE-Node01</code> installé (<code>192.168.10.201</code>) · Web :8006 OK</li>
+<li>[v] <code>PVE-Node02</code> installé (<code>192.168.10.202</code>) · Web :8006 OK</li>
+<li>[v] Ping croisé entre les deux nœuds OK</li>
+</ul>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../../01 - Virtualisation/TP/TP01-Installation-Proxmox.html">TP01-Installation-Proxmox</a> · <a href="../../06 - Réseau/TP/TP17 - Mise en place d'un routeur.html">TP17 - Mise en place d'un routeur</a></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../../07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html">TP19 - Stockage partage NFS Proxmox</a></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><a href="../../Architecture.html">Architecture</a> · <span class="link-unpublished" title="Page non publiée">Inventaire</span></td>
+</tr>
+<tr>
+<td>Théorie</td>
+<td><a href="../../07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation.html">Cours 01 - Architecture avancée de virtualisation</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

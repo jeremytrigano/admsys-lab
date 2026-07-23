@@ -145,6 +145,81 @@
     "html": "05 - Linux/TP/TP14 - Administration Linux.html"
   },
   {
+    "path": "06 - Réseau/Cours 01 - Fondamentaux réseau",
+    "title": "Cours 01 - Fondamentaux réseau",
+    "html": "06 - Réseau/Cours 01 - Fondamentaux réseau.html"
+  },
+  {
+    "path": "06 - Réseau/Cours 02 - Routage",
+    "title": "Cours 02 - Routage",
+    "html": "06 - Réseau/Cours 02 - Routage.html"
+  },
+  {
+    "path": "06 - Réseau/Cours 03 - Commutation et VLAN",
+    "title": "Cours 03 - Commutation et VLAN",
+    "html": "06 - Réseau/Cours 03 - Commutation et VLAN.html"
+  },
+  {
+    "path": "06 - Réseau/Cours 04 - Diagnostic réseau",
+    "title": "Cours 04 - Diagnostic réseau",
+    "html": "06 - Réseau/Cours 04 - Diagnostic réseau.html"
+  },
+  {
+    "path": "06 - Réseau/TP/TP16 - Analyse du réseau",
+    "title": "TP16 - Analyse du réseau",
+    "html": "06 - Réseau/TP/TP16 - Analyse du réseau.html"
+  },
+  {
+    "path": "06 - Réseau/TP/TP17 - Mise en place d'un routeur",
+    "title": "TP17 - Mise en place d'un routeur",
+    "html": "06 - Réseau/TP/TP17 - Mise en place d'un routeur.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation",
+    "title": "Cours 01 - Architecture avancée de virtualisation",
+    "html": "07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels",
+    "title": "Cours 02 - Stockage avancé et réseaux virtuels",
+    "html": "07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/Cours 03 - Haute disponibilité, migration et sauvegarde",
+    "title": "Cours 03 - Haute disponibilité, migration et sauvegarde",
+    "html": "07 - Virtualisation avancée/Cours 03 - Haute disponibilité, migration et sauvegarde.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested",
+    "title": "TP18 - Preparation des noeuds Proxmox nested",
+    "html": "07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox",
+    "title": "TP19 - Stockage partage NFS Proxmox",
+    "html": "07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox",
+    "title": "TP20 - Creation d'un cluster Proxmox",
+    "html": "07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/TP/TP21 - Quorum device Proxmox",
+    "title": "TP21 - Quorum device Proxmox",
+    "html": "07 - Virtualisation avancée/TP/TP21 - Quorum device Proxmox.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/TP/TP22 - Migration et haute disponibilite Proxmox",
+    "title": "TP22 - Migration et haute disponibilite Proxmox",
+    "html": "07 - Virtualisation avancée/TP/TP22 - Migration et haute disponibilite Proxmox.html"
+  },
+  {
+    "path": "07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM",
+    "title": "TP23 - Sauvegarde et restauration de VM",
+    "html": "07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM.html"
+  },
+  {
     "path": "Architecture",
     "title": "Architecture",
     "html": "./Architecture.html"

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cours 01 - Architecture avancée de virtualisation — AdmSys</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="layout">
+    <nav class="sidebar">
+      <div class="site-title"><a href="../index.html">AdmSys</a></div>
+      <ul class="nav-list">
+        <li><a href="../Architecture.html" class="nav-link">Architecture</a></li><li class="nav-category">01 - Virtualisation</li><li><a href="../01 - Virtualisation/Cours - Hyperviseurs.html" class="nav-link">Cours - Hyperviseurs</a></li><li><a href="../01 - Virtualisation/Cours - Virtualisation.html" class="nav-link">Cours - Virtualisation</a></li><li><a href="../01 - Virtualisation/TP/TP01-Installation-Proxmox.html" class="nav-link">TP01-Installation-Proxmox</a></li><li><a href="../01 - Virtualisation/TP/TP02-Creation-SRV-DC01.html" class="nav-link">TP02-Creation-SRV-DC01</a></li><li><a href="../01 - Virtualisation/TP/TP03-Creation-WIN11-CLIENT01.html" class="nav-link">TP03-Creation-WIN11-CLIENT01</a></li><li class="nav-category">02 - Active Directory</li><li><a href="../02 - Active Directory/Cours - Active Directory.html" class="nav-link">Cours - Active Directory</a></li><li><a href="../02 - Active Directory/Cours - Authentification Kerberos.html" class="nav-link">Cours - Authentification Kerberos</a></li><li><a href="../02 - Active Directory/TP/TP04-Promotion-DC.html" class="nav-link">TP04-Promotion-DC</a></li><li><a href="../02 - Active Directory/TP/TP05-Creation-OU.html" class="nav-link">TP05-Creation-OU</a></li><li><a href="../02 - Active Directory/TP/TP06-Utilisateurs-et-groupes.html" class="nav-link">TP06-Utilisateurs-et-groupes</a></li><li><a href="../02 - Active Directory/TP/TP07-Jonction-poste-client.html" class="nav-link">TP07-Jonction-poste-client</a></li><li class="nav-category">03 - DNS et DHCP</li><li><a href="../03 - DNS et DHCP/Cours - DHCP.html" class="nav-link">Cours - DHCP</a></li><li><a href="../03 - DNS et DHCP/Cours - DNS.html" class="nav-link">Cours - DNS</a></li><li><a href="../03 - DNS et DHCP/TP/TP08-DNS.html" class="nav-link">TP08-DNS</a></li><li><a href="../03 - DNS et DHCP/TP/TP09-DHCP.html" class="nav-link">TP09-DHCP</a></li><li class="nav-category">04 - Gestion Windows</li><li><a href="../04 - Gestion Windows/Cours - Fichiers et Permissions.html" class="nav-link">Cours - Fichiers et Permissions</a></li><li><a href="../04 - Gestion Windows/Cours - GPO.html" class="nav-link">Cours - GPO</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Bases.html" class="nav-link">Cours - PowerShell Bases</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Scripts AD.html" class="nav-link">Cours - PowerShell Scripts AD</a></li><li><a href="../04 - Gestion Windows/Cours - PowerShell Scripts Administration.html" class="nav-link">Cours - PowerShell Scripts Administration</a></li><li><a href="../04 - Gestion Windows/TP/TP10 - Serveur de fichiers.html" class="nav-link">TP10 - Serveur de fichiers</a></li><li><a href="../04 - Gestion Windows/TP/TP11 - GPO.html" class="nav-link">TP11 - GPO</a></li><li><a href="../04 - Gestion Windows/TP/TP12 - PowerShell.html" class="nav-link">TP12 - PowerShell</a></li><li class="nav-category">05 - Linux</li><li><a href="../05 - Linux/Cours 01 - Linux.html" class="nav-link">Cours 01 - Linux</a></li><li><a href="../05 - Linux/Cours 02 - Administration Linux.html" class="nav-link">Cours 02 - Administration Linux</a></li><li><a href="../05 - Linux/Cours 03 - Réseau Linux.html" class="nav-link">Cours 03 - Réseau Linux</a></li><li><a href="../05 - Linux/Cours 04 - Services Linux.html" class="nav-link">Cours 04 - Services Linux</a></li><li><a href="../05 - Linux/TP/TP13 - Installation et découverte Linux.html" class="nav-link">TP13 - Installation et découverte Linux</a></li><li><a href="../05 - Linux/TP/TP14 - Administration Linux.html" class="nav-link">TP14 - Administration Linux</a></li><li class="nav-category">06 - Réseau</li><li><a href="../06 - Réseau/Cours 01 - Fondamentaux réseau.html" class="nav-link">Cours 01 - Fondamentaux réseau</a></li><li><a href="../06 - Réseau/Cours 02 - Routage.html" class="nav-link">Cours 02 - Routage</a></li><li><a href="../06 - Réseau/Cours 03 - Commutation et VLAN.html" class="nav-link">Cours 03 - Commutation et VLAN</a></li><li><a href="../06 - Réseau/Cours 04 - Diagnostic réseau.html" class="nav-link">Cours 04 - Diagnostic réseau</a></li><li><a href="../06 - Réseau/TP/TP16 - Analyse du réseau.html" class="nav-link">TP16 - Analyse du réseau</a></li><li><a href="../06 - Réseau/TP/TP17 - Mise en place d'un routeur.html" class="nav-link">TP17 - Mise en place d'un routeur</a></li><li class="nav-category">07 - Virtualisation avancée</li><li><a href="../07 - Virtualisation avancée/Cours 01 - Architecture avancée de virtualisation.html" class="nav-link active">Cours 01 - Architecture avancée de virtualisation</a></li><li><a href="../07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html" class="nav-link">Cours 02 - Stockage avancé et réseaux virtuels</a></li><li><a href="../07 - Virtualisation avancée/Cours 03 - Haute disponibilité, migration et sauvegarde.html" class="nav-link">Cours 03 - Haute disponibilité, migration et sauvegarde</a></li><li><a href="../07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html" class="nav-link">TP18 - Preparation des noeuds Proxmox nested</a></li><li><a href="../07 - Virtualisation avancée/TP/TP19 - Stockage partage NFS Proxmox.html" class="nav-link">TP19 - Stockage partage NFS Proxmox</a></li><li><a href="../07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html" class="nav-link">TP20 - Creation d'un cluster Proxmox</a></li><li><a href="../07 - Virtualisation avancée/TP/TP21 - Quorum device Proxmox.html" class="nav-link">TP21 - Quorum device Proxmox</a></li><li><a href="../07 - Virtualisation avancée/TP/TP22 - Migration et haute disponibilite Proxmox.html" class="nav-link">TP22 - Migration et haute disponibilite Proxmox</a></li><li><a href="../07 - Virtualisation avancée/TP/TP23 - Sauvegarde et restauration de VM.html" class="nav-link">TP23 - Sauvegarde et restauration de VM</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <article><h1>Architecture avancée de virtualisation</h1>
+<blockquote>
+<p>Voir aussi : <a href="../01 - Virtualisation/Cours - Virtualisation.html">Cours - Virtualisation</a> · <a href="../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a> · <a href="../07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html">Cours 02 - Stockage avancé et réseaux virtuels</a></p>
+</blockquote>
+<h2>Objectifs du chapitre 07</h2>
+<p>À la fin de ce chapitre, l'apprenant doit être capable de :</p>
+<ul>
+<li>Comprendre les architectures de virtualisation avancées</li>
+<li>Administrer un cluster d'hyperviseurs</li>
+<li>Gérer le stockage et les réseaux virtuels</li>
+<li>Réaliser des migrations de machines virtuelles</li>
+<li>Mettre en place des mécanismes de haute disponibilité</li>
+<li>Sauvegarder et restaurer des machines virtuelles</li>
+<li>Comprendre les notions utilisées dans les environnements professionnels (datacenter, cloud privé)</li>
+</ul>
+<h2>Objectifs du cours</h2>
+<p>Comprendre les concepts permettant de construire une infrastructure virtualisée professionnelle.</p>
+<h2>1. Rappel - virtualisation classique</h2>
+<p>Dans une architecture simple :</p>
+<pre><code class="language-text">              Utilisateurs
+                  |
+              Réseau LAN
+                  |
+            +-------------+
+            | Hyperviseur |
+            |  Proxmox    |
+            +-------------+
+             /           \
+            /             \
+       VM Windows       VM Linux
+</code></pre>
+<p>Un seul serveur physique héberge plusieurs machines virtuelles.</p>
+<p>Limites :</p>
+<ul>
+<li>panne du serveur = arrêt de toutes les VM</li>
+<li>ressources limitées au serveur</li>
+<li>maintenance difficile</li>
+</ul>
+<h2>2. Architecture cluster</h2>
+<p>Un cluster regroupe plusieurs hyperviseurs.</p>
+<p>Exemple :</p>
+<pre><code class="language-text">              Cluster Proxmox
+
+        +-------------+
+        |   Node 01   |
+        | Proxmox     |
+        +-------------+
+              |
+        +-------------+
+        |   Node 02   |
+        | Proxmox     |
+        +-------------+
+              |
+        +-------------+
+        |   Node 03   |
+        | Proxmox     |
+        +-------------+
+</code></pre>
+<p>Avantages :</p>
+<ul>
+<li>haute disponibilité</li>
+<li>migration des VM</li>
+<li>maintenance sans interruption</li>
+<li>répartition de charge</li>
+</ul>
+<h2>3. Hyperviseur de type 1</h2>
+<p>Un hyperviseur de type 1 fonctionne directement sur le matériel.</p>
+<p>Exemples :</p>
+<ul>
+<li>Proxmox VE</li>
+<li>VMware ESXi</li>
+<li>Microsoft Hyper-V Server</li>
+</ul>
+<p>Architecture :</p>
+<pre><code class="language-text">Hardware
+   |
+Hyperviseur
+   |
+Machines virtuelles
+</code></pre>
+<p>Contrairement à :</p>
+<pre><code class="language-text">Hardware
+   |
+Windows
+   |
+VirtualBox
+   |
+VM
+</code></pre>
+<p>qui est un hyperviseur de type 2.</p>
+<h2>4. Ressources virtualisées</h2>
+<p>Un hyperviseur partage :</p>
+<h3>CPU</h3>
+<p>Notions :</p>
+<ul>
+<li>vCPU</li>
+<li>sockets virtuels</li>
+<li>cores</li>
+<li>overcommit CPU</li>
+</ul>
+<p>Exemple :</p>
+<pre><code class="language-text">CPU physique : 16 cores
+
+VM1 : 4 vCPU
+VM2 : 8 vCPU
+VM3 : 8 vCPU
+
+Total : 20 vCPU
+</code></pre>
+<p>Cela fonctionne grâce au partage temporel du processeur.</p>
+<h3>Mémoire RAM</h3>
+<h4>Ballooning</h4>
+<p>Une VM peut rendre de la mémoire inutilisée à l'hyperviseur.</p>
+<h4>Memory overcommit</h4>
+<p>Attribuer plus de RAM virtuelle que la RAM physique disponible.</p>
+<p>Exemple :</p>
+<pre><code class="language-text">Serveur : 64 Go RAM
+
+VM AD     :  8 Go
+VM Linux  : 16 Go
+VM SQL    : 32 Go
+VM Test   : 16 Go
+
+Total     : 72 Go
+</code></pre>
+<p>Possible, mais nécessite une surveillance.</p>
+<h2>5. Notions professionnelles</h2>
+<h3>Datacenter</h3>
+<p>Regroupement logique :</p>
+<ul>
+<li>clusters</li>
+<li>stockage</li>
+<li>réseau</li>
+<li>VM</li>
+</ul>
+<h3>Provisioning</h3>
+<p>Création de ressources.</p>
+<h4>Thick provisioning</h4>
+<p>Réservation immédiate :</p>
+<pre><code class="language-text">Disque VM 500 Go = 500 Go utilisés
+</code></pre>
+<h4>Thin provisioning</h4>
+<p>Allocation dynamique :</p>
+<pre><code class="language-text">Disque VM 500 Go
+Réellement utilisé : 50 Go
+</code></pre>
+<hr />
+<h2>Progression</h2>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Lien</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prérequis</td>
+<td><a href="../01 - Virtualisation/Cours - Hyperviseurs.html">Cours - Hyperviseurs</a> · <span class="link-unpublished" title="Page non publiée">TP15 - Services et réseau Linux</span></td>
+</tr>
+<tr>
+<td>Suite recommandée</td>
+<td>→ <a href="../07 - Virtualisation avancée/Cours 02 - Stockage avancé et réseaux virtuels.html">Cours 02 - Stockage avancé et réseaux virtuels</a></td>
+</tr>
+<tr>
+<td>Branches</td>
+<td><a href="../Architecture.html">Architecture</a></td>
+</tr>
+<tr>
+<td>TP associé</td>
+<td><a href="../07 - Virtualisation avancée/TP/TP18 - Preparation des noeuds Proxmox nested.html">TP18 - Preparation des noeuds Proxmox nested</a> · <a href="../07 - Virtualisation avancée/TP/TP20 - Creation d'un cluster Proxmox.html">TP20 - Creation d'un cluster Proxmox</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Suivi : <span class="link-unpublished" title="Page non publiée">Progression</span></p>
+</blockquote></article>
+    </main>
+  </div>
+</body>
+</html>

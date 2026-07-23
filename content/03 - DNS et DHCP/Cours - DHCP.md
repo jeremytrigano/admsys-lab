@@ -1,6 +1,6 @@
 # DHCP
 
-> Voir aussi : [[Cours - DNS]] · [[../../06 - Réseau/Cours - Réseaux]] · [[TP/TP09-DHCP]] · [[00 - Administration du parcours/Préparation entretiens#03 - DNS et DHCP]]
+> Voir aussi : [[Cours - DNS]] · [[../../06 - Réseau/Cours 01 - Fondamentaux réseau]] · [[TP/TP09-DHCP]] · [[00 - Administration du parcours/Préparation entretiens#03 - DNS et DHCP]]
 
 ## Définition
 
